@@ -1,0 +1,70 @@
+<%- include('../partials/header.ejs') %>
+    <h1>
+        Welcome <%= fullName.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') %>
+    </h1>
+    <hr>
+
+    <!-- Job history -->
+    <h3>Carrer</h3>
+    <ul>
+        <% jobHistory.filter(job => job.title === ' job_history').forEach(job=> { %>
+            <li>
+                <%= job.content %>
+            </li>
+            <% }) %>
+                </ul>
+                <hr>
+
+                <!-- Education -->
+                <h3>Education</h3>
+                <ul>
+                    <% jobHistory.filter(job=> job.title === 'education').forEach(job => { %>
+                        <li>
+                            <%= job.content %>
+                        </li>
+                        <% }) %>
+                </ul>
+                <hr>
+
+                <!-- Skills -->
+                <h3>Skills</h3>
+                <ul>
+                    <% jobHistory.filter(job=> job.title === 'skills').forEach(job => { %>
+                        <li>
+                            <%= job.content %>
+                        </li>
+                        <% }) %>
+                </ul>
+                <hr>
+
+                <!-- Profile Info -->
+                <h3>Profile Info</h3>
+                <ul>
+                    <% jobHistory.filter(job=> job.title === 'profile_info').forEach(job => { %>
+                        <li>
+                            <%= job.content %>
+                        </li>
+                        <% }) %>
+                </ul>
+                <hr>
+
+                <!-- Add new entry -->
+                <h3>Add</h3>
+                <form action="/dashboard/add_entry" method="POST">
+                    <label for="title">Add:</label>
+                    <select name="title" id="title">
+                        <option value="job_history">Job History</option>
+                        <option value="education">Education</option>
+                        <option value="skills">Skills</option>
+                        <option value="profile_info">Profile Info</option>
+                    </select>
+                    <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                    <input type="submit" value="Add" />
+                </form>
+                <hr>
+
+                <form action="/logout" method="GET">
+                    <input type="submit" value="Logout" />
+                    </body>
+
+                    </html>

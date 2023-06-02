@@ -1,0 +1,21 @@
+<%- include('partials/header.ejs') %>
+
+    <form action="/login" method="POST">
+        <!-- Email -->
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="email@example.com" required />
+
+        <!-- Password -->
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="password" minlength="4" required />
+
+        <!-- Submit button -->
+        <input type="submit" value="Login" />
+    </form>
+
+    <!-- link register -->
+    <a href="/register">Register</a>
+
+    </body>
+
+    </html>
