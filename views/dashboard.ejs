@@ -1,0 +1,32 @@
+<%- include('partials/header.ejs') %>
+    <h5>Welcome, <%= user.email %>!</h5>
+
+    <header>
+        <h5>Add info</h5>
+        <nav>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+
+    <!-- render job description for each job -->
+    <h3>Previous jobs:</h3>
+    <% user.jobs.forEach(function(job) { %>
+        <div class="job">
+            <p>
+                <%= job.description %>
+            </p>
+            <form action="/dashboard/<%= job._id %>" method="DELETE">
+                <button type="submit">x</button>
+            </form>
+        </div>
+        <% }) %>
+
+            <!-- add job form -->
+            <form action="/dashboard" method="POST">
+                <textarea name="jobDescription" required placeholder="Previous job"></textarea>
+                <button type="submit">Add</button>
+            </form>
+
+            </body>
+
+            </html>
