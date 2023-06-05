@@ -1,5 +1,6 @@
 const User = require('../models/UserModel');
 const GPT3_API = require('../utils/gpt');
+const prompt = require('../utils/prompt');
 
 var md = require('markdown-it')();
 
@@ -82,9 +83,12 @@ exports.getCreateResume = async (req, res) => {
     console.log('No user found');
     return res.redirect('/');
   }
+
+  const user = await User.findOne({ email: req.session.user });
+
   const resumeBlank = '';
   // Re-render the page with the generated resume
-  res.render('createResume', { resume: resumeBlank });
+  res.render('createResume', { resume: resumeBlank, user });
 };
 
 exports.postCreateResume = async (req, res) => {
@@ -101,33 +105,19 @@ exports.postCreateResume = async (req, res) => {
   // Get the user's education
   const education = user.education;
 
-  // Create a prompt for GPT to generate a resume
-  const prompt = `# Generate a resume in html and with css style tag for the following job. It should be in pure html with a css style tag. This html will be placed directly in a web page.
-  
-  
-  ========
-  job: ${jobListing}
-  ========
-
-  Try to stay true to the following information provided by the user. If you think it is necessary, you can add additional information to the resume. Color the new info in green.
- 
-  ========
-  ## Based on the following information provided by the user:  
-  ${firstName} ${lastName}
-  ## Basic Information
-  ${firstName} ${lastName}
-  ${phone}
-  ${location}
-  ## Work Experience
-  ${jobs.map((job) => `### ${job.description}`).join('\n')}
-  ## Skills
-  ${skills.map((skill) => `### ${skill.description}`).join('\n')}
-  ## Education
-  ${education.map((edu) => `### ${edu.description}`).join('\n')}
-  `;
-
   // Generate the resume
-  const gpt3Response = await GPT3_API(prompt);
+  const gpt3Prompt = prompt.generatePrompt(
+    jobListing,
+    firstName,
+    lastName,
+    phone,
+    location,
+    jobs,
+    skills,
+    education
+  );
+  const gpt3Response = await GPT3_API(gpt3Prompt);
+
   console.log(gpt3Response);
   // var result = md.render(gpt3Response);
   // Re-render the page with the generated resume
