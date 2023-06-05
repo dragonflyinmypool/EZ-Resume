@@ -102,8 +102,17 @@ exports.postCreateResume = async (req, res) => {
   const education = user.education;
 
   // Create a prompt for GPT to generate a resume
-  const prompt = `# Generate a resume in html and with css style tag for this job: ${jobListing}
-  ## Based on the following information:  
+  const prompt = `# Generate a resume in html and with css style tag for the following job. It should be in pure html with a css style tag. This html will be placed directly in a web page.
+  
+  
+  ========
+  job: ${jobListing}
+  ========
+
+  Try to stay true to the following information provided by the user. If you think it is necessary, you can add additional information to the resume. Color the new info in green.
+ 
+  ========
+  ## Based on the following information provided by the user:  
   ${firstName} ${lastName}
   ## Basic Information
   ${firstName} ${lastName}
