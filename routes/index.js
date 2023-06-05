@@ -15,4 +15,7 @@ router.post('/dashboard/basicInfo', userDataController.updateBasicInfo);
 
 router.post('/dashboard/:section/:itemId', userDataController.deleteEntry);
 
+router.get('/create-resume', userDataController.getCreateResume);
+router.post('/create-resume', userDataController.postCreateResume);
+
 module.exports = router;

@@ -3,7 +3,7 @@
     <h1>Resume Generator</h1>
 
     <!-- Input area for pasting a job listing -->
-    <form action="/generateResume" method="POST">
+    <form action="/create-resume" method="POST">
         <textarea name="jobListing" required placeholder="Paste a job listing here"></textarea>
         <button type="submit">Submit</button>
     </form>
@@ -13,7 +13,7 @@
         <% if (resume) { %>
             <h2>Generated Resume</h2>
             <p>
-                <%= resume %>
+                <%- resume %>
             </p>
             <% } %>
     </div>
