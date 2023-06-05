@@ -1,0 +1,22 @@
+<%- include('partials/header.ejs') %>
+
+    <h1>Resume Generator</h1>
+
+    <!-- Input area for pasting a job listing -->
+    <form action="/generateResume" method="POST">
+        <textarea name="jobListing" required placeholder="Paste a job listing here"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Section for displaying the generated resume -->
+    <div id="resumeSection">
+        <% if (resume) { %>
+            <h2>Generated Resume</h2>
+            <p>
+                <%= resume %>
+            </p>
+            <% } %>
+    </div>
+    </body>
+
+    </html>

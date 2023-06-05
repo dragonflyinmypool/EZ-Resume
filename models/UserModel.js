@@ -1,8 +1,15 @@
 const mongoose = require('mongoose');
 
-const jobSchema = new mongoose.Schema(
+const sectionSchema = new mongoose.Schema({
+  description: String,
+});
+
+const basicInfoSchema = new mongoose.Schema(
   {
-    description: String,
+    firstName: { type: String, default: '' },
+    lastName: { type: String, default: '' },
+    phone: { type: String, default: '' },
+    location: { type: String, default: '' },
   },
   { _id: false }
 );
@@ -11,7 +18,10 @@ const userSchema = new mongoose.Schema({
   email: String,
   token: String,
   expires: Date,
-  jobs: [jobSchema],
+  jobs: [sectionSchema],
+  skills: [sectionSchema],
+  education: [sectionSchema],
+  basicInfo: { type: basicInfoSchema, default: () => ({}) },
 });
 
 module.exports = mongoose.model('User', userSchema);

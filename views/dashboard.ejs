@@ -2,31 +2,83 @@
     <h5>Welcome, <%= user.email %>!</h5>
 
     <header>
-        <h5>Add info</h5>
+        <h5>Add your career info</h5>
         <nav>
             <a href="/logout">Logout</a>
         </nav>
     </header>
 
-    <!-- render job description for each job -->
-    <h3>Previous jobs:</h3>
-    <% user.jobs.forEach(function(job) { %>
-        <div class="job">
-            <p>
-                <%= job.description %>
-            </p>
-            <form action="/dashboard/<%= job._id %>" method="DELETE">
-                <button type="submit">x</button>
-            </form>
-        </div>
-        <% }) %>
+    <main>
+        <form action="/dashboard/basicInfo" method="POST" id="basicInfo">
 
-            <!-- add job form -->
-            <form action="/dashboard" method="POST">
-                <textarea name="jobDescription" required placeholder="Previous job"></textarea>
-                <button type="submit">Add</button>
-            </form>
+            <label>
+                First Name:
+                <input type="text" name="firstName" value="<%= user.basicInfo.firstName %>" required>
+            </label>
+            <label>
+                Last Name:
+                <input type="text" name="lastName" value="<%= user.basicInfo.lastName %>" required>
+            </label>
+            <label>
+                Phone:
+                <input type="text" name="phone" value="<%= user.basicInfo.phone %>" required>
+            </label>
+            <label>
+                Location:
+                <input type="text" name="location" value="<%= user.basicInfo.location %>" required>
+            </label>
+            <button type="submit" class="add">Update</button>
+        </form>
 
-            </body>
+        <%- include('partials/infoSection', {title: 'Jobs' , section:'jobs' , userHistory: user.jobs}) %>
+            <%- include('partials/infoSection', {title: 'Education' , section:'education' , userHistory:
+                user.education}) %>
+                <%- include('partials/infoSection', {title: 'Skills' , section:'skills', userHistory: user.skills}) %>
+    </main>
 
-            </html>
+    <style>
+        /* style delete button */
+        .delete {
+            background-color: rgb(244, 162, 162);
+            color: white;
+            border: none;
+            border-radius: 20%;
+            padding: 5px;
+            cursor: pointer;
+            /* font size */
+            font-size: 8px;
+        }
+
+        /* style add button, soft green */
+        .add {
+            background-color: rgb(50, 101, 50);
+            color: white;
+            border: none;
+            border-radius: 20%;
+            padding: 5px;
+            cursor: pointer;
+            width: 60px;
+        }
+
+        /* style  #basicInfo form, flex column*/
+        #basicInfo {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: left;
+            gap: 10px;
+        }
+
+        /* input width */
+        #basicInfo input {
+            width: 200px;
+        }
+
+        /* lable width */
+        #basicInfo label {
+            width: 200px;
+        }
+    </style>
+    </body>
+
+    </html>

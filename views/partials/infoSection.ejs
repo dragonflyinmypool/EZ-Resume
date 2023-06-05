@@ -1,0 +1,30 @@
+<!-- infoSection.ejs -->
+<div>
+    <h3>
+        <%= title %>
+    </h3>
+    <% userHistory.forEach(function(item) { %>
+        <div class="<%= title.toLowerCase() %>">
+            <!-- one row using css flexbox, align to left -->
+            <span style="display: flex;  align-items: left; gap: 10px">
+                <form action="/dashboard/<%= section.toLowerCase() %>/<%= item._id %>" method="POST">
+                    <button type="submit" class="delete">x</button>
+                </form>
+                <%= item.description %>
+            </span>
+
+        </div>
+        <% }) %>
+
+            <!-- add form -->
+            <p>
+            <form action="/dashboard" method="POST">
+                <input type="hidden" name="section" value="<%= section.toLowerCase() %>">
+                <textarea name="description" required placeholder="Add a new <%= title %>"></textarea>
+                <button type="submit" class="add">Add</button>
+            </form>
+            </p>
+</div>
+<style>
+
+</style>
