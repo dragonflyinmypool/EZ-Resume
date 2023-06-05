@@ -36,23 +36,12 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+    store: MongoDBStore.create({ clientPromise }),
     cookie: {
       maxAge: 90 * 24 * 60 * 60 * 1000, // 90 days in milliseconds
     },
   })
 );
-
-mongoose
-  .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log('Connected to database');
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
 app.use('/', routes);
 
