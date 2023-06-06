@@ -1,6 +1,6 @@
 const User = require('../models/UserModel');
 const GPT3_API = require('../utils/gpt');
-const prompt = require('../utils/prompt');
+const prompt = require('../utils/gptPrompt');
 
 var md = require('markdown-it')();
 
