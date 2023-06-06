@@ -4,7 +4,8 @@ const prompt = require('../utils/prompt');
 
 var md = require('markdown-it')();
 
-exports.getDashboard = async (req, res, next) => {
+// Add info
+exports.getAddInfo = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
     res.render('add-info', { user });
@@ -12,7 +13,19 @@ exports.getDashboard = async (req, res, next) => {
     next(error);
   }
 };
+exports.addBasicInfo = async (req, res, next) => {
+  try {
+    const user = await User.findOne({ email: req.session.user });
+    const { firstName, lastName, phone, location } = req.body;
 
+    user.basicInfo = { firstName, lastName, phone, location };
+    await user.save();
+
+    res.redirect('/dashboard/add-info');
+  } catch (error) {
+    next(error);
+  }
+};
 exports.addEntry = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
@@ -26,7 +39,6 @@ exports.addEntry = async (req, res, next) => {
     next(error);
   }
 };
-
 exports.deleteEntry = async (req, res, next) => {
   console.log(req.params);
   try {
@@ -44,20 +56,7 @@ exports.deleteEntry = async (req, res, next) => {
   }
 };
 
-exports.updateBasicInfo = async (req, res, next) => {
-  try {
-    const user = await User.findOne({ email: req.session.user });
-    const { firstName, lastName, phone, location } = req.body;
-
-    user.basicInfo = { firstName, lastName, phone, location };
-    await user.save();
-
-    res.redirect('/dashboard/add-info');
-  } catch (error) {
-    next(error);
-  }
-};
-
+// Create resume
 exports.getCreateResume = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
@@ -67,7 +66,6 @@ exports.getCreateResume = async (req, res, next) => {
     next(error);
   }
 };
-
 exports.postCreateResume = async (req, res, next) => {
   try {
     const { jobListing } = req.body;
