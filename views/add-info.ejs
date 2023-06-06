@@ -1,19 +1,18 @@
+<!-- Header -->
 <%- include('templates/header.ejs', {page: 'addInfo' })%>
 
 <main>
   <!-- Enter basic info -->
-
-  <!-- ***ADD PARTIAL HERE*** -->
   <%- include('components/basic-info', {user}) %>
   <!-- Enter Jobs -->
-  <%- include('components/section', {title: 'Jobs' , section:'jobs' , userHistory: user.jobs, textboxHeight: '135px' }) %>
+  <%- include('components/section', {title: 'Jobs' ,  message:'Add a job', section:'jobs' , userHistory: user.jobs, textboxHeight: '135px' }) %>
   <!-- Enter Education -->
-  <%- include('components/section', {title: 'Education' , section:'education' , userHistory: user.education, textboxHeight: '135px' }) %>
+  <%- include('components/section', {title: 'Education', message:'Add an instition or degree' , section:'education' , userHistory: user.education, textboxHeight: '135px' }) %>
   <!-- Enter Skills -->
-  <%- include('components/section', {title: 'Skills' , section:'skills', userHistory: user.skills, textboxHeight: '25px' }) %>
+  <%- include('components/section', {title: 'Skills' , message:'Add a skill', section:'skills', userHistory: user.skills, textboxHeight: '25px' }) %>
 </main>
 
-
+<!-- Footer -->
 <%- include('templates/footer.ejs', {page: 'addInfo', user }) %>
 <style>
   /* style delete button */

@@ -23,7 +23,7 @@
   <p>
   <form action="/dashboard/add-info" method="POST">
     <input type="hidden" name="section" value="<%= section.toLowerCase() %>">
-    <textarea name="description" style="height: <%=textboxHeight %>;" required placeholder="Add a new <%= title %>" id="<%= title %>textArea"></textarea><br><br>
+    <textarea name="description" style="height: <%=textboxHeight %>;" required placeholder="<%= message %>" id="<%= title %>textArea"></textarea><br><br>
     <button type="submit" class="add">Add</button>
   </form>
   </p>
