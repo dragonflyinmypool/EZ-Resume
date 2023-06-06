@@ -7,7 +7,11 @@
         <div class="<%= title.toLowerCase() %>">
             <!-- one row using css flexbox, align to left -->
             <span style="display: flex;  align-items: left; gap: 10px">
-                <form action="/dashboard/<%= section.toLowerCase() %>/<%= item._id %>" method="POST">
+
+
+                <form action="/dashboard/delete-info/<%= section.toLowerCase() %>/<%= item._id %>?_method=DELETE"
+                    method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="delete">x</button>
                 </form>
                 <%= item.description %>
@@ -18,7 +22,7 @@
 
             <!-- add form -->
             <p>
-            <form action="/dashboard" method="POST">
+            <form action="/dashboard/add-info" method="POST">
                 <input type="hidden" name="section" value="<%= section.toLowerCase() %>">
                 <textarea name="description" style="height: <%=textboxHeight %>;" required
                     placeholder="Add a new <%= title %>" id="<%= title %>textArea"></textarea><br><br>

@@ -7,7 +7,7 @@ var md = require('markdown-it')();
 exports.getDashboard = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
-    res.render('dashboard', { user });
+    res.render('add-info', { user });
   } catch (error) {
     next(error);
   }
@@ -21,13 +21,14 @@ exports.addEntry = async (req, res, next) => {
     user[section].push({ description });
 
     await user.save();
-    res.redirect('/dashboard');
+    res.redirect('add-info');
   } catch (error) {
     next(error);
   }
 };
 
 exports.deleteEntry = async (req, res, next) => {
+  console.log(req.params);
   try {
     const user = await User.findOne({ email: req.session.user });
     const { section, itemId } = req.params;
@@ -37,7 +38,7 @@ exports.deleteEntry = async (req, res, next) => {
     );
     await user.save();
 
-    res.redirect('/dashboard');
+    res.redirect('/dashboard/add-info');
   } catch (error) {
     next(error);
   }
@@ -51,7 +52,7 @@ exports.updateBasicInfo = async (req, res, next) => {
     user.basicInfo = { firstName, lastName, phone, location };
     await user.save();
 
-    res.redirect('/dashboard');
+    res.redirect('/dashboard/add-info');
   } catch (error) {
     next(error);
   }

@@ -6,7 +6,7 @@ const transporter = require('../utils/mailer');
 exports.getLoginPage = (req, res, next) => {
   // If user is already logged in, redirect to dashboard
   if (req.session.user) {
-    return res.redirect('/dashboard');
+    return res.redirect('/dashboard/add-info');
   }
 
   res.render('index');
@@ -58,7 +58,7 @@ exports.getToken = async (req, res, next) => {
     }
 
     req.session.user = user.email;
-    res.redirect('/dashboard');
+    res.redirect('/dashboard/add-info');
   } catch (error) {
     next(error);
   }

@@ -3,11 +3,13 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const methodOverride = require('method-override');
 const MongoDBStore = require('connect-mongo');
 const path = require('path');
 
 const app = express();
-const routes = require('./routes/index');
+const loginRoutes = require('./routes/login');
+const dashRoutes = require('./routes/dashboard');
 
 const dbOptions = {
   useNewUrlParser: true,
@@ -23,6 +25,7 @@ const clientPromise = mongoose
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(
@@ -37,7 +40,9 @@ app.use(
   })
 );
 
-app.use('/', routes);
+app.use('/', loginRoutes);
+
+app.use('/dashboard', dashRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
