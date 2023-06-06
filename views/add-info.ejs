@@ -1,37 +1,20 @@
-<%- include('partials/header.ejs') %>
-<%- include('partials/nav.ejs', {page: 'addInfo' }) %>
-
+<%- include('templates/header.ejs', {page: 'addInfo' })%>
 
 <main>
-  <form action="/dashboard/basic-info" method="POST" id="basicInfo">
+  <!-- Enter basic info -->
 
-    <label>
-      First Name:
-      <input type="text" name="firstName" value="<%= user.basicInfo.firstName %>" required>
-    </label>
-    <label>
-      Last Name:
-      <input type="text" name="lastName" value="<%= user.basicInfo.lastName %>" required>
-    </label>
-    <label>
-      Phone:
-      <input type="text" name="phone" value="<%= user.basicInfo.phone %>" required>
-    </label>
-    <label>
-      Location:
-      <input type="text" name="location" value="<%= user.basicInfo.location %>" required>
-    </label>
-    <button type="submit" class="add">Save</button>
-  </form>
-
-  <%- include('partials/infoSection', {title: 'Jobs' , section:'jobs' , userHistory: user.jobs,
-                textboxHeight: '135px' }) %>
-  <%- include('partials/infoSection', {title: 'Education' , section:'education' , userHistory:
-                    user.education, textboxHeight: '135px' }) %>
-  <%- include('partials/infoSection', {title: 'Skills' , section:'skills', userHistory: user.skills,
-                        textboxHeight: '25px' }) %>
+  <!-- ***ADD PARTIAL HERE*** -->
+  <%- include('components/basic-info', {user}) %>
+  <!-- Enter Jobs -->
+  <%- include('components/section', {title: 'Jobs' , section:'jobs' , userHistory: user.jobs, textboxHeight: '135px' }) %>
+  <!-- Enter Education -->
+  <%- include('components/section', {title: 'Education' , section:'education' , userHistory: user.education, textboxHeight: '135px' }) %>
+  <!-- Enter Skills -->
+  <%- include('components/section', {title: 'Skills' , section:'skills', userHistory: user.skills, textboxHeight: '25px' }) %>
 </main>
 
+
+<%- include('templates/footer.ejs', {page: 'addInfo', user }) %>
 <style>
   /* style delete button */
   .delete {
@@ -79,10 +62,6 @@
     width: 330px;
   }
 </style>
-<%- include('partials/nav.ejs', {page: 'addInfo' }) %>
-
-<%- include('partials/footer.ejs') %>
-
 </body>
 
 </html>

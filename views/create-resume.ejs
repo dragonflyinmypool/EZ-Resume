@@ -1,0 +1,41 @@
+<%- include('templates/header.ejs', {page: 'generateResume'}),   %>
+<main>
+  <form action="/dashboard/create-resume" method="POST" id="jobListingForm">
+    <textarea name="jobListing" required placeholder="Paste a job listing here"></textarea>
+    <button type="submit">Generated Resume</button>
+  </form>
+
+  <!-- Section for displaying the generated resume -->
+  <% if (!resume) { %>
+  <div id="resumeSection">
+    <div id="loadingMessage" class="loading" style="display: none;">
+      <p>Your resume is being generated. It will load within one minute.</p>
+      <!-- Optionally, you could include a loading graphic here -->
+      <!-- <img src="loading.gif" alt="Loading..."> -->
+    </div>
+    <% } %>
+    <% if (resume) { %>
+    <h2>Generated Resume</h2>
+    <p>
+      <%- resume %>
+    </p>
+    <% } %>
+  </div>
+</main>
+<script>
+  document.getElementById('jobListingForm').addEventListener('submit', function() {
+    document.getElementById('loadingMessage').style.display = 'block';
+  });
+</script>
+<%- include('templates/footer.ejs', {page: 'generateResume', user }) %>
+
+<style>
+  /* textarea */
+  textarea {
+    width: 200px;
+    height: 200px;
+  }
+</style>
+</body>
+
+</html>

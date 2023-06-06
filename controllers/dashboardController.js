@@ -2,8 +2,6 @@ const User = require('../models/UserModel');
 const GPT3_API = require('../utils/gpt');
 const prompt = require('../utils/gptPrompt');
 
-var md = require('markdown-it')();
-
 // Add info
 exports.getAddInfo = async (req, res, next) => {
   try {
@@ -61,7 +59,7 @@ exports.getCreateResume = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
     const resumeBlank = '';
-    res.render('createResume', { resume: resumeBlank, user });
+    res.render('create-resume', { resume: resumeBlank, user });
   } catch (error) {
     next(error);
   }
@@ -87,7 +85,7 @@ exports.postCreateResume = async (req, res, next) => {
     );
     const gpt3Response = await GPT3_API(gpt3Prompt);
 
-    res.render('createResume', { resume: gpt3Response, user });
+    res.render('create-resume', { resume: gpt3Response, user });
   } catch (error) {
     next(error);
   }
