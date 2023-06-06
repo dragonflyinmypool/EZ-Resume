@@ -1,10 +1,10 @@
 const { Configuration, OpenAIApi } = require('openai');
+require('dotenv').config();
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-// create an async function
 async function GPT3_API(prompt) {
   const openai = new OpenAIApi(configuration);
 
@@ -14,8 +14,7 @@ async function GPT3_API(prompt) {
       messages: [
         {
           role: 'system',
-          content:
-            'You are a resume assistant and job placement specialist who know how to edit a resume to get your client the job, and graphic web designer expert in html css.',
+          content: 'You are a resume assistant',
         },
         { role: 'user', content: prompt },
       ],
@@ -25,9 +24,10 @@ async function GPT3_API(prompt) {
     const response = completion.data.choices[0].message.content;
     console.log('The prompt has been sent successfully');
     return response;
-  } catch (error) {
-    console.dir(error, { depth: null });
-  }
+  } catch (error) {}
 }
 
-module.exports = GPT3_API;
+const prompt = 'create a resume for a coder';
+
+// call the function
+GPT3_API(prompt).then((response) => console.log(response));

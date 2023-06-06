@@ -131,35 +131,37 @@ body {
 </style>
 </main>`;
 
-exports.generatePrompt = (
-  jobListing,
-  firstName,
-  lastName,
-  phone,
-  location,
-  jobs,
-  skills,
-  education
-) =>
-  `# Generate a resume in html and with css style tag for the following job. It should be in pure html with a css style tag. This html will be placed directly in a web page.
-  ========
-  job: ${jobListing}
-  ========
-  Try to stay true to the following information provided by the user. If you think it is necessary, you can add additional information to the resume. Color the new info in green.
-  ========
-  ## Based on the following information provided by the user:  
-  ${firstName} ${lastName}
-  ## Basic Information
-  ${firstName} ${lastName}
-  ${phone}
-  ${location}
-  ## Work Experience
-  ${jobs.map((job) => `### ${job.description}`).join('\n')}
-  ## Skills
-  ${skills.map((skill) => `### ${skill.description}`).join('\n')}
-  ## Education
-  ${education.map((edu) => `### ${edu.description}`).join('\n')}
+// exports.generatePrompt = (
+//   jobListing,
+//   firstName,
+//   lastName,
+//   phone,
+//   location,
+//   jobs,
+//   skills,
+//   education
+// ) =>
+//   `# Generate a resume in html and with css style tag for the following job. It should be in pure html with a css style tag. This html will be placed directly in a web page.
+//   ========
+//   job: ${jobListing}
+//   ========
+//   Try to stay true to the following information provided by the user. If you think it is necessary, you can add additional information to the resume. Color the new info in green.
+//   ========
+//   ## Based on the following information provided by the user:
+//   ${firstName} ${lastName}
+//   ## Basic Information
+//   ${firstName} ${lastName}
+//   ${phone}
+//   ${location}
+//   ## Work Experience
+//   ${jobs.map((job) => `### ${job.description}`).join('\n')}
+//   ## Skills
+//   ${skills.map((skill) => `### ${skill.description}`).join('\n')}
+//   ## Education
+//   ${education.map((edu) => `### ${edu.description}`).join('\n')}
 
-    ## You can use the following html template to get started:
-    ${htmlTemplate}    
-  `;
+//     ## You can use the following html template to get started:
+//     ${htmlTemplate}
+//   `;
+
+exports.generatePrompt = () => 'create a resume';

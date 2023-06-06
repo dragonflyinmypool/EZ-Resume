@@ -1,37 +1,43 @@
 <%- include('partials/header.ejs') %>
     <%- include('partials/nav.ejs', {page: 'generateResume' }) %>
+        <main>
+            <form action="/create-resume" method="POST" id="jobListingForm">
+                <textarea name="jobListing" required placeholder="Paste a job listing here"></textarea>
+                <button type="submit">Generated Resume</button>
+            </form>
 
-        <form action="/create-resume" method="POST" id="jobListingForm">
-            <textarea name="jobListing" required placeholder="Paste a job listing here"></textarea>
-            <button type="submit">Generated Resume</button>
-        </form>
-
-        <!-- Section for displaying the generated resume -->
-        <% if (!resume) { %>
-            <div id="resumeSection">
-                <div id="loadingMessage" class="loading" style="display: none;">
-                    <p>Your resume is being generated. It will load within one minute.</p>
-                    <!-- Optionally, you could include a loading graphic here -->
-                    <!-- <img src="loading.gif" alt="Loading..."> -->
+            <!-- Section for displaying the generated resume -->
+            <% if (!resume) { %>
+                <div id="resumeSection">
+                    <div id="loadingMessage" class="loading" style="display: none;">
+                        <p>Your resume is being generated. It will load within one minute.</p>
+                        <!-- Optionally, you could include a loading graphic here -->
+                        <!-- <img src="loading.gif" alt="Loading..."> -->
+                    </div>
+                    <% } %>
+                        <% if (resume) { %>
+                            <h2>Generated Resume</h2>
+                            <p>
+                                <%- resume %>
+                            </p>
+                            <% } %>
                 </div>
-                <% } %>
-                    <% if (resume) { %>
-                        <h2>Generated Resume</h2>
-                        <p>
-                            <%- resume %>
-                        </p>
-                        <% } %>
-            </div>
+        </main>
+        <script>
+            document.getElementById('jobListingForm').addEventListener('submit', function () {
+                document.getElementById('loadingMessage').style.display = 'block';
+            });
+        </script>
+        <%- include('partials/nav.ejs', {page: 'generateResume' }) %>
 
-            <script>
-                document.getElementById('jobListingForm').addEventListener('submit', function () {
-                    document.getElementById('loadingMessage').style.display = 'block';
-                });
-            </script>
-            <%- include('partials/nav.ejs', {page: 'generateResume' }) %>
+            <%- include('partials/footer.ejs') %>
+                <style>
+                    /* textarea */
+                    textarea {
+                        width: 200px;
+                        height: 200px;
+                    }
+                </style>
+                </body>
 
-                <%- include('partials/footer.ejs') %>
-
-                    </body>
-
-                    </html>
+                </html>
