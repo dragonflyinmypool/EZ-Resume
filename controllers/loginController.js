@@ -12,7 +12,8 @@ exports.getLoginPage = (req, res, next) => {
   res.render('index');
 };
 
-// User submits email
+// User creation and login flow
+// 1. Email submitted, user created, email sent
 exports.postLogin = async (req, res, next) => {
   try {
     const email = req.body.email;
@@ -44,8 +45,7 @@ exports.postLogin = async (req, res, next) => {
     next(error);
   }
 };
-
-// User clicks the login link
+// 2. User clicks the login link, token is verified, user is logged in
 exports.getToken = async (req, res, next) => {
   try {
     const user = await User.findOne({
@@ -64,6 +64,7 @@ exports.getToken = async (req, res, next) => {
   }
 };
 
+// Logout, destroy session, redirect to login page
 exports.logout = (req, res, next) => {
   req.session.destroy((err) => {
     if (err) {

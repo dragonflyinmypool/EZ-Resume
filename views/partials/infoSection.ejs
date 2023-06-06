@@ -1,32 +1,30 @@
 <!-- infoSection.ejs -->
 <div>
-    <h3>
-        <%= title %>
-    </h3>
-    <% userHistory.forEach(function(item) { %>
-        <div class="<%= title.toLowerCase() %>">
-            <!-- one row using css flexbox, align to left -->
-            <span style="display: flex;  align-items: left; gap: 10px">
+  <h3>
+    <%= title %>
+  </h3>
+  <% userHistory.forEach(function(item) { %>
+  <div class="<%= title.toLowerCase() %>">
+    <!-- one row using css flexbox, align to left -->
+    <span style="display: flex;  align-items: left; gap: 10px">
 
 
-                <form action="/dashboard/delete-info/<%= section.toLowerCase() %>/<%= item._id %>?_method=DELETE"
-                    method="POST">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="delete">x</button>
-                </form>
-                <%= item.description %>
-            </span>
+      <form action="/dashboard/delete-info/<%= section.toLowerCase() %>/<%= item._id %>?_method=DELETE" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit" class="delete">x</button>
+      </form>
+      <%= item.description %>
+    </span>
 
-        </div>
-        <% }) %>
+  </div>
+  <% }) %>
 
-            <!-- add form -->
-            <p>
-            <form action="/dashboard/add-info" method="POST">
-                <input type="hidden" name="section" value="<%= section.toLowerCase() %>">
-                <textarea name="description" style="height: <%=textboxHeight %>;" required
-                    placeholder="Add a new <%= title %>" id="<%= title %>textArea"></textarea><br><br>
-                <button type="submit" class="add">Add</button>
-            </form>
-            </p>
+  <!-- add form -->
+  <p>
+  <form action="/dashboard/add-info" method="POST">
+    <input type="hidden" name="section" value="<%= section.toLowerCase() %>">
+    <textarea name="description" style="height: <%=textboxHeight %>;" required placeholder="Add a new <%= title %>" id="<%= title %>textArea"></textarea><br><br>
+    <button type="submit" class="add">Add</button>
+  </form>
+  </p>
 </div>

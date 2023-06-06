@@ -1,88 +1,88 @@
 <%- include('partials/header.ejs') %>
-    <%- include('partials/nav.ejs', {page: 'addInfo' }) %>
+<%- include('partials/nav.ejs', {page: 'addInfo' }) %>
 
 
-        <main>
-            <form action="/dashboard/basic-info" method="POST" id="basicInfo">
+<main>
+  <form action="/dashboard/basic-info" method="POST" id="basicInfo">
 
-                <label>
-                    First Name:
-                    <input type="text" name="firstName" value="<%= user.basicInfo.firstName %>" required>
-                </label>
-                <label>
-                    Last Name:
-                    <input type="text" name="lastName" value="<%= user.basicInfo.lastName %>" required>
-                </label>
-                <label>
-                    Phone:
-                    <input type="text" name="phone" value="<%= user.basicInfo.phone %>" required>
-                </label>
-                <label>
-                    Location:
-                    <input type="text" name="location" value="<%= user.basicInfo.location %>" required>
-                </label>
-                <button type="submit" class="add">Save</button>
-            </form>
+    <label>
+      First Name:
+      <input type="text" name="firstName" value="<%= user.basicInfo.firstName %>" required>
+    </label>
+    <label>
+      Last Name:
+      <input type="text" name="lastName" value="<%= user.basicInfo.lastName %>" required>
+    </label>
+    <label>
+      Phone:
+      <input type="text" name="phone" value="<%= user.basicInfo.phone %>" required>
+    </label>
+    <label>
+      Location:
+      <input type="text" name="location" value="<%= user.basicInfo.location %>" required>
+    </label>
+    <button type="submit" class="add">Save</button>
+  </form>
 
-            <%- include('partials/infoSection', {title: 'Jobs' , section:'jobs' , userHistory: user.jobs,
+  <%- include('partials/infoSection', {title: 'Jobs' , section:'jobs' , userHistory: user.jobs,
                 textboxHeight: '135px' }) %>
-                <%- include('partials/infoSection', {title: 'Education' , section:'education' , userHistory:
+  <%- include('partials/infoSection', {title: 'Education' , section:'education' , userHistory:
                     user.education, textboxHeight: '135px' }) %>
-                    <%- include('partials/infoSection', {title: 'Skills' , section:'skills', userHistory: user.skills,
+  <%- include('partials/infoSection', {title: 'Skills' , section:'skills', userHistory: user.skills,
                         textboxHeight: '25px' }) %>
-        </main>
+</main>
 
-        <style>
-            /* style delete button */
-            .delete {
-                background-color: rgb(244, 162, 162);
-                color: white;
-                border: none;
-                border-radius: 20%;
-                padding: 5px;
-                cursor: pointer;
-                /* font size */
-                font-size: 8px;
-            }
+<style>
+  /* style delete button */
+  .delete {
+    background-color: rgb(244, 162, 162);
+    color: white;
+    border: none;
+    border-radius: 20%;
+    padding: 5px;
+    cursor: pointer;
+    /* font size */
+    font-size: 8px;
+  }
 
-            /* style add button, soft green */
-            .add {
-                background-color: rgb(50, 101, 50);
-                color: white;
-                border: none;
-                border-radius: 20%;
-                padding: 5px;
-                cursor: pointer;
-                width: 60px;
-            }
+  /* style add button, soft green */
+  .add {
+    background-color: rgb(50, 101, 50);
+    color: white;
+    border: none;
+    border-radius: 20%;
+    padding: 5px;
+    cursor: pointer;
+    width: 60px;
+  }
 
-            /* style  #basicInfo form, flex column*/
-            #basicInfo {
-                display: flex;
-                flex-direction: column;
-                justify-content: start;
-                align-items: left;
-                gap: 10px;
-            }
+  /* style  #basicInfo form, flex column*/
+  #basicInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: left;
+    gap: 10px;
+  }
 
-            /* input width */
-            #basicInfo input {
-                width: 200px;
-            }
+  /* input width */
+  #basicInfo input {
+    width: 200px;
+  }
 
-            /* lable width */
-            #basicInfo label {
-                width: 200px;
-            }
+  /* lable width */
+  #basicInfo label {
+    width: 200px;
+  }
 
-            textarea {
-                width: 330px;
-            }
-        </style>
-        <%- include('partials/nav.ejs', {page: 'addInfo' }) %>
+  textarea {
+    width: 330px;
+  }
+</style>
+<%- include('partials/nav.ejs', {page: 'addInfo' }) %>
 
-            <%- include('partials/footer.ejs') %>
+<%- include('partials/footer.ejs') %>
 
-                </body>
+</body>
 
-                </html>
+</html>
