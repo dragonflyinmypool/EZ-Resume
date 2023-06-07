@@ -9,7 +9,7 @@ exports.getLoginPage = (req, res, next) => {
     return res.redirect('/dashboard/add-info');
   }
 
-  res.render('login');
+  res.render('Register');
 };
 
 // User creation and login flow

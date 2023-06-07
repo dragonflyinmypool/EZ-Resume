@@ -1,4 +1,10 @@
- <form action="/dashboard/create-resume" method="POST" id="jobListingForm">
-   <textarea name="jobListing" required placeholder="Paste a job listing here"></textarea>
-   <button type="submit">Generated Resume</button>
- </form>
+<form action="/dashboard/create-resume" method="POST" id="jobListingForm" class="mb-4">
+  <div class="mb-3">
+    <label for="jobListing" class="form-label">Paste a job listing here:</label>
+    <textarea class="form-control" id="jobListing" name="jobListing" required placeholder="Paste a job listing here"></textarea>
+  </div>
+
+  <div class="text-center">
+    <button type="submit" class="btn btn-success w-50">Generate Resume</button>
+  </div>
+</form>

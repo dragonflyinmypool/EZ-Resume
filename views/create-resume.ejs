@@ -1,7 +1,8 @@
-<!-- Header -->
-<%- include('templates/header.ejs', {page: 'generateResume'}),   %>
+<main class="container-lg mt-3 container-max">
 
-<main>
+  <!-- Header -->
+  <%- include('templates/header.ejs', {page: 'create-resume'}),   %>
+
   <!-- Submit job listing -->
   <%- include('components/submit-job-listing.ejs'),   %>
 
@@ -9,10 +10,8 @@
   <% if (resume) { %>
   <%- include('components/display-resume.ejs', {resume}),   %>
   <% } %>
-</main>
+  <%- include('templates/footer.ejs', {page: 'add-info', user }) %>
 
-<!-- Footer -->
-<%- include('templates/footer.ejs', {page: 'generateResume', user }) %>
-</body>
+  </body>
 
-</html>
+  </html>

@@ -1,66 +1,10 @@
-<!-- Header -->
-<%- include('templates/header.ejs', {page: 'addInfo' })%>
-
-<main>
-  <!-- Enter basic info -->
+<main class="container-lg mt-3 container-max">
+  <%- include('templates/header.ejs', {page: 'add-info' })%>
   <%- include('components/basic-info', {user}) %>
-  <!-- Enter Jobs -->
   <%- include('components/section', {title: 'Jobs' ,  message:'Add a job', section:'jobs' , userHistory: user.jobs, textboxHeight: '135px' }) %>
-  <!-- Enter Education -->
   <%- include('components/section', {title: 'Education', message:'Add an instition or degree' , section:'education' , userHistory: user.education, textboxHeight: '135px' }) %>
-  <!-- Enter Skills -->
   <%- include('components/section', {title: 'Skills' , message:'Add a skill', section:'skills', userHistory: user.skills, textboxHeight: '25px' }) %>
+  <%- include('templates/nav-bar.ejs',{page: 'add-info' } ) %>
+  <%- include('templates/footer.ejs', {page: 'add-info', user }) %>
+
 </main>
-
-<!-- Footer -->
-<%- include('templates/footer.ejs', {page: 'addInfo', user }) %>
-<style>
-  /* style delete button */
-  .delete {
-    background-color: rgb(244, 162, 162);
-    color: white;
-    border: none;
-    border-radius: 20%;
-    padding: 5px;
-    cursor: pointer;
-    /* font size */
-    font-size: 8px;
-  }
-
-  /* style add button, soft green */
-  .add {
-    background-color: rgb(50, 101, 50);
-    color: white;
-    border: none;
-    border-radius: 20%;
-    padding: 5px;
-    cursor: pointer;
-    width: 60px;
-  }
-
-  /* style  #basicInfo form, flex column*/
-  #basicInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: left;
-    gap: 10px;
-  }
-
-  /* input width */
-  #basicInfo input {
-    width: 200px;
-  }
-
-  /* lable width */
-  #basicInfo label {
-    width: 200px;
-  }
-
-  textarea {
-    width: 330px;
-  }
-</style>
-</body>
-
-</html>

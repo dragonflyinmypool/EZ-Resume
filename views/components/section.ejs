@@ -1,30 +1,20 @@
-<!-- infoSection.ejs -->
-<div>
-  <h3>
-    <%= title %>
-  </h3>
+<div class="mb-4">
+  <h3 class="mb-2"><%= title %></h3>
   <% userHistory.forEach(function(item) { %>
   <div class="<%= title.toLowerCase() %>">
-    <!-- one row using css flexbox, align to left -->
-    <span style="display: flex;  align-items: left; gap: 10px">
-
-
+    <div class="d-flex justify-content-between align-items-center mb-1">
+      <p class="mb-0"><%= item.description %></p>
       <form action="/dashboard/delete-info/<%= section.toLowerCase() %>/<%= item._id %>?_method=DELETE" method="POST">
         <input type="hidden" name="_method" value="DELETE">
-        <button type="submit" class="delete">x</button>
+        <button type="submit" class="btn btn-sm btn-danger">x</button>
       </form>
-      <%= item.description %>
-    </span>
-
+    </div>
   </div>
   <% }) %>
 
-  <!-- add form -->
-  <p>
   <form action="/dashboard/add-info" method="POST">
     <input type="hidden" name="section" value="<%= section.toLowerCase() %>">
-    <textarea name="description" style="height: <%=textboxHeight %>;" required placeholder="<%= message %>" id="<%= title %>textArea"></textarea><br><br>
-    <button type="submit" class="add">Add</button>
+    <textarea name="description" class="form-control mb-2" style="height: <%=textboxHeight %>;" required placeholder="<%= message %>" id="<%= title %>textArea"></textarea>
+    <button type="submit" class="btn btn-success w-100">Add</button>
   </form>
-  </p>
 </div>

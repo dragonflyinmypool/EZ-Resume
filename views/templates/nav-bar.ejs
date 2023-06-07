@@ -1,55 +1,14 @@
-<nav class="navbar">
-  <ul class="navbar-nav">
-    <% if (page ==='addInfo') { %>
-    <li class="nav-item current">Step 1: Add Your Info</li>
-
-    <li class="nav-item"><a href="/dashboard/create-resume">Step 2: Generate Resume</a></li>
-    <% } else if (page === 'generateResume') { %>
-    <li class="nav-item"><a href="/dashboard/add-info">Step 1: Add Your Info</a></li>
-    <li class="nav-item current">Step 2: Generate Resume</li>
-    <% } %>
-    <li class="nav-item"></li>
-  </ul>
-</nav>
-
-
-
-<style>
-  .navbar {
-    font-family: 'Roboto', sans-serif;
-    background-color: #202020;
-  }
-
-  .navbar-nav {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-  }
-
-  .nav-item {
-    color: #bbb;
-    font-size: 1.0rem;
-    margin-right: 15px;
-    padding: 5px 10px;
-  }
-
-  .nav-item.current {
-    background-color: #57cd6b;
-    color: #fff;
-    font-weight: bold;
-    padding: 5px 10px;
-
-  }
-
-  .nav-item a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .nav-item a:hover {
-    color: #fff;
-  }
-</style>
+ <nav class="navbar">
+   <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+     <li class="nav-item" role="presentation">
+       <a href="/dashboard/add-info" class="nav-link rounded-5 <%= page === 'add-info' ? 'active' : '' %>" id="home-tab2" data-bs-toggle="tab" role="tab" aria-selected="true">
+         Add Your Info
+       </a>
+     </li>
+     <li class="nav-item" role="presentation">
+       <a href="/dashboard/create-resume" class="nav-link rounded-5 <%= page === 'create-resume' ? 'active' : '' %>" id="profile-tab2" data-bs-toggle="tab" role="tab" aria-selected="false">
+         Generate Resume
+       </a>
+     </li>
+   </ul>
+ </nav>
