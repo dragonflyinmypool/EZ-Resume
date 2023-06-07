@@ -7,14 +7,12 @@
 
   <!-- Display resume -->
   <% if (resume) { %>
-  <!-- Import resume display component -->
   <%- include('components/display-resume.ejs', {resume}),   %>
   <% } %>
-  </div>
 </main>
 
+<!-- Footer -->
 <%- include('templates/footer.ejs', {page: 'generateResume', user }) %>
-
 </body>
 
 </html>
