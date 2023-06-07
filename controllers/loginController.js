@@ -9,6 +9,16 @@ exports.getLoginPage = (req, res, next) => {
     return res.redirect('/dashboard/add-info');
   }
 
+  res.render('Login');
+};
+
+// Register
+exports.getRegisterPage = (req, res, next) => {
+  // If user is already logged in, redirect to dashboard
+  if (req.session.user) {
+    return res.redirect('/dashboard/add-info');
+  }
+
   res.render('Register');
 };
 
