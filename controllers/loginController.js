@@ -6,7 +6,7 @@ const transporter = require('../utils/mailer');
 exports.getLoginPage = (req, res, next) => {
   // If user is already logged in, redirect to dashboard
   if (req.session.user) {
-    return res.redirect('/dashboard/add-info');
+    return res.redirect('/dashboard/add-basic');
   }
 
   res.render('Login');
@@ -50,7 +50,7 @@ exports.postLogin = async (req, res, next) => {
       html: `Click <a href="${link}">here</a> to login.`,
     });
 
-    res.send('Email sent. Please check your inbox for the login link.');
+    res.render('check-email', { email });
   } catch (error) {
     next(error);
   }
@@ -68,7 +68,7 @@ exports.getToken = async (req, res, next) => {
     }
 
     req.session.user = user.email;
-    res.redirect('/dashboard/add-info');
+    res.redirect('/dashboard/add-basic');
   } catch (error) {
     next(error);
   }

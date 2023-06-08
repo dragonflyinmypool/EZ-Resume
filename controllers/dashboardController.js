@@ -6,7 +6,7 @@ const prompt = require('../utils/gptPrompt');
 exports.getAddInfo = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
-    res.render('add-info', { user });
+    res.render('add-basic', { user });
   } catch (error) {
     next(error);
   }
@@ -19,7 +19,7 @@ exports.addBasicInfo = async (req, res, next) => {
     user.basicInfo = { firstName, lastName, phone, location };
     await user.save();
 
-    res.redirect('/dashboard/add-info');
+    res.redirect('/dashboard/add-basic');
   } catch (error) {
     next(error);
   }
@@ -28,11 +28,11 @@ exports.addEntry = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
 
-    const { section, description } = req.body;
+    const { section, description, page } = req.body;
     user[section].push({ description });
 
     await user.save();
-    res.redirect('add-info');
+    res.redirect(page);
   } catch (error) {
     next(error);
   }
@@ -48,7 +48,37 @@ exports.deleteEntry = async (req, res, next) => {
     );
     await user.save();
 
-    res.redirect('/dashboard/add-info');
+    res.redirect(`/dashboard/${page}`);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Add jobs
+exports.getAddJobs = async (req, res, next) => {
+  try {
+    const user = await User.findOne({ email: req.session.user });
+    res.render('add-jobs', { user });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Add education
+exports.getAddEducation = async (req, res, next) => {
+  try {
+    const user = await User.findOne({ email: req.session.user });
+    res.render('add-education', { user });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Add skills
+exports.getAddSkills = async (req, res, next) => {
+  try {
+    const user = await User.findOne({ email: req.session.user });
+    res.render('add-skills', { user });
   } catch (error) {
     next(error);
   }

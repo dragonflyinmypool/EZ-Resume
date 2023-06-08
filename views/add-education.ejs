@@ -1,0 +1,9 @@
+<!-- set 'page' variable in ejs -->
+<% page = 'add-education' %>
+
+<main class="container-lg mt-3 container-max">
+  <%- include('templates/header.ejs', { page })%>
+  <%- include('components/section', {title: 'Education', message:'Add an instition or degree' , section:'education' , userHistory: user.education, textboxHeight: '135px', page }) %>
+  <%- include('templates/footer.ejs', {page: 'add-info', user }) %>
+
+</main>

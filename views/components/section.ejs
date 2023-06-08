@@ -6,6 +6,7 @@
       <p class="mb-0"><%= item.description %></p>
       <form action="/dashboard/delete-info/<%= section.toLowerCase() %>/<%= item._id %>?_method=DELETE" method="POST">
         <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="page" value="<%= page %>">
         <button type="submit" class="btn btn-sm btn-danger">x</button>
       </form>
     </div>
@@ -14,6 +15,8 @@
 
   <form action="/dashboard/add-info" method="POST">
     <input type="hidden" name="section" value="<%= section.toLowerCase() %>">
+    <input type="hidden" name="page" value="<%= page %>">
+
     <textarea name="description" class="form-control mb-2" style="height: <%=textboxHeight %>;" required placeholder="<%= message %>" id="<%= title %>textArea"></textarea>
     <button type="submit" class="btn btn-success w-100">Add</button>
   </form>

@@ -7,14 +7,19 @@ const router = express.Router();
 router.use(auth);
 
 // Add Info
-router.get('/add-info', userDataController.getAddInfo);
-router.post('/add-info', userDataController.addEntry);
+router.get('/add-basic', userDataController.getAddInfo);
 router.post('/basic-info', userDataController.addBasicInfo);
-router.delete(
-  '/delete-info/:section/:itemId',
-  auth,
-  userDataController.deleteEntry
-);
+router.post('/add-info', userDataController.addEntry);
+router.delete('/delete-info/:section/:itemId', userDataController.deleteEntry);
+
+// Add jobs
+router.get('/add-jobs', userDataController.getAddJobs);
+
+// Add education
+router.get('/add-education', userDataController.getAddEducation);
+
+// Add skills
+router.get('/add-skills', userDataController.getAddSkills);
 
 // Create Resume
 router.get('/create-resume', userDataController.getCreateResume);

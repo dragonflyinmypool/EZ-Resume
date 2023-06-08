@@ -1,0 +1,7 @@
+<% page = 'add-jobs' %>
+
+<main class="container-lg mt-3 container-max">
+  <%- include('templates/header.ejs', { page })%>
+  <%- include('components/section', {title: 'Jobs' ,  message:'Add a job', section:'jobs' , userHistory: user.jobs, textboxHeight: '135px', page }) %>
+  <%- include('templates/footer.ejs', {page, user }) %>
+</main>

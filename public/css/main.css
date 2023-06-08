@@ -1,6 +1,7 @@
 body {
     padding-top: 20px;
     padding: 10px;
+    font-size: 10px;
 }
 
 main {
@@ -16,4 +17,11 @@ textarea {
     max-width: 800px;
     /* adjust as per your requirement */
     margin: auto;
+}
+
+/* for large screens */
+@media only screen and (min-width: 600px) {
+    body {
+        font-size: 18px;
+    }
 }
