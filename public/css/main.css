@@ -4,6 +4,10 @@ body {
     font-size: 10px;
 }
 
+nav {
+    font-size: 12px;
+}
+
 main {
     padding: 10px;
 }
@@ -23,5 +27,9 @@ textarea {
 @media only screen and (min-width: 600px) {
     body {
         font-size: 18px;
+    }
+
+    nav {
+        font-size: 22px;
     }
 }
