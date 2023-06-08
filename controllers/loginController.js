@@ -16,7 +16,7 @@ exports.getLoginPage = (req, res, next) => {
 exports.getRegisterPage = (req, res, next) => {
   // If user is already logged in, redirect to dashboard
   if (req.session.user) {
-    return res.redirect('/dashboard/add-basic ');
+    return res.redirect('/dashboard/add-basic');
   }
 
   res.render('Register');

@@ -113,9 +113,16 @@ exports.postCreateResume = async (req, res, next) => {
       skills,
       education
     );
-    const gpt3Response = await GPT3_API(gpt3Prompt);
+    const resumeString = await GPT3_API(gpt3Prompt);
 
-    res.render('create-resume', { resume: gpt3Response, user });
+    console.log('====== GPT response: ' + resumeString);
+    console.log(typeof resumeString);
+
+    // convert string to object
+    const resume = JSON.parse(resumeString);
+    console.log(typeof resume);
+
+    res.render('create-resume', { resume, user });
   } catch (error) {
     next(error);
   }

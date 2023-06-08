@@ -6,12 +6,13 @@
   <!-- Submit job listing -->
   <%- include('components/submit-job-listing.ejs'),   %>
 
+  <!-- console.log resume -->
+
   <!-- Display resume -->
   <% if (resume) { %>
-  <%- include('components/display-resume.ejs', {resume}),   %>
+  <%- include('components/resume-render.ejs', { resumeData: resume }) %>
   <% } %>
   <%- include('templates/footer.ejs', {page: 'add-info', user }) %>
-
   </body>
 
   </html>

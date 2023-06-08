@@ -8,6 +8,7 @@ const configuration = new Configuration({
 // create an async function
 async function GPT3_API(prompt) {
   const openai = new OpenAIApi(configuration);
+  console.log('Prompt: ', prompt);
 
   try {
     console.log('The prompt is being sent');
@@ -26,6 +27,7 @@ async function GPT3_API(prompt) {
     });
 
     const response = completion.data.choices[0].message.content;
+    console.log('Response: ', response);
     return response;
   } catch (error) {
     console.dir(error, { depth: null });
