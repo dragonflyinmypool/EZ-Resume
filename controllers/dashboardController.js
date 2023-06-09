@@ -23,7 +23,7 @@ exports.addBasicInfo = async (req, res, next) => {
     user.basicInfo = { firstName, lastName, phone, location };
     await user.save();
 
-    res.redirect('/dashboard/add-basic');
+    res.redirect('/dashboard/add-jobs');
   } catch (error) {
     next(error);
   }

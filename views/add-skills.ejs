@@ -1,8 +1,11 @@
 <% page = 'add-skills' %>
 
-<main class="container-lg mt-3 container-max">
+<main class="container-lg container-max">
   <%- include('templates/header.ejs', { page })%>
   <%- include('components/section', {title: 'Skills' ,  message:'Add a skill', section:'skills' , userHistory: user.skills, textboxHeight: '135px', page }) %>
+
+  <a href="create-resume" class="btn btn-primary w-100">next</a>
+
   <%- include('templates/footer.ejs', {page, user }) %>
 
 </main>

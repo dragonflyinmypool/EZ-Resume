@@ -1,8 +1,10 @@
 <!-- set 'page' variable in ejs -->
 <% page = 'add-basics' %>
 
-<main class="container-lg mt-3 container-max">
+<main class="container-lg container-max">
   <%- include('templates/header.ejs', { page })%>
   <%- include('components/basic-info', { user }) %>
   <%- include('templates/footer.ejs', { page, user }) %>
+
+
 </main>

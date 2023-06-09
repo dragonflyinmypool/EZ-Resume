@@ -1,11 +1,14 @@
 <nav class="navbar navbar-light bg-light bottom-nav">
-  <div class="container-fluid">
-    <%= user.email %>
-    <ul class="navbar-nav ms-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/logout">Logout</a>
-      </li>
-    </ul>
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <div class="text-center">
+      <%= user.email %>
+    </div>
+    <div class="text-center">
+      EZ-Resume
+    </div>
+    <div class="text-end">
+      <a class="nav-link" href="/logout">Logout</a>
+    </div>
   </div>
 </nav>
 
