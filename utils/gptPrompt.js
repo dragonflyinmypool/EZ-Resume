@@ -11,7 +11,7 @@ const htmlTemplate = `
         {
             "jobTitle": "Job Title at Company",
             "jobDuration": "Dates",
-            "jobDescription": "Description of job..."
+            "JobDutiesOrAccomplishments": ["Duty/Accomplishment 1",  "Duty/Accomplishment Duty 2", "Duty/Accomplishment Duty 2"]
         }
     ],
     "education": [

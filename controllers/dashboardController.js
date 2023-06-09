@@ -1,6 +1,10 @@
 const User = require('../models/UserModel');
 const GPT3_API = require('../utils/gpt');
 const prompt = require('../utils/gptPrompt');
+const { createResumeString } = require('../utils/createResumeString');
+const puppeteer = require('puppeteer');
+const path = require('path');
+const uuidv4 = require('uuid').v4;
 
 // Add info
 exports.getAddInfo = async (req, res, next) => {
@@ -88,12 +92,14 @@ exports.getAddSkills = async (req, res, next) => {
 exports.getCreateResume = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
-    const resumeBlank = '';
-    res.render('create-resume', { resume: resumeBlank, user });
+    const resume = '';
+    const pdfUrl = '';
+    res.render('create-resume', { resume, user, pdfUrl });
   } catch (error) {
     next(error);
   }
 };
+
 exports.postCreateResume = async (req, res, next) => {
   try {
     const { jobListing } = req.body;
@@ -113,16 +119,47 @@ exports.postCreateResume = async (req, res, next) => {
       skills,
       education
     );
-    const resumeString = await GPT3_API(gpt3Prompt);
 
-    console.log('====== GPT response: ' + resumeString);
-    console.log(typeof resumeString);
+    const resumeDataString = await GPT3_API(gpt3Prompt);
 
-    // convert string to object
-    const resume = JSON.parse(resumeString);
-    console.log(typeof resume);
+    // Convert string to object
+    const resume = JSON.parse(resumeDataString);
 
-    res.render('create-resume', { resume, user });
+    // Convert object to string
+    const resumeString2 = createResumeString(resume);
+
+    // Use puppeteer to convert string to PDF
+    const browser = await puppeteer.launch({ headless: 'new' });
+    const page = await browser.newPage();
+
+    await page.setContent(resumeString2, {
+      waitUntil: 'networkidle0',
+    });
+
+    const pdfConfig = {
+      format: 'A4',
+      printBackground: true,
+    };
+
+    // Generate a unique filename
+    const filename = `resume_${uuidv4()}.pdf`;
+
+    // Define the path of PDF file
+    const pdfPath = path.join(__dirname, '../public/pdfs', filename);
+
+    await page.pdf({ ...pdfConfig, path: pdfPath });
+    await browser.close();
+
+    // email the PDF to the user
+
+    // Get just the filename
+    const urlFileName = path.basename(pdfPath);
+
+    // Form the URL
+    const pdfUrl = `/pdfs/${urlFileName}`;
+
+    // Render the HTML page and provide a download link for the PDF
+    res.render('create-resume', { resume, user, pdfUrl });
   } catch (error) {
     next(error);
   }

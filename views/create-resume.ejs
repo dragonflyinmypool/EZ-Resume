@@ -6,13 +6,26 @@
   <!-- Submit job listing -->
   <%- include('components/submit-job-listing.ejs'),   %>
 
-  <!-- console.log resume -->
+  <!-- Download resume button with bootstap styles -->
+  <!-- if pdfPath then -->
+  <% if (pdfUrl) { %>
+
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <a href="<%= pdfUrl %>" download>Download PDF</a>
+  </div>
+
+
+
+  <% } %>
 
   <!-- Display resume -->
   <% if (resume) { %>
   <%- include('components/resume-render.ejs', { resumeData: resume }) %>
   <% } %>
   <%- include('templates/footer.ejs', {page: 'add-info', user }) %>
-  </body>
 
-  </html>
+</main>
+
+</body>
+
+</html>

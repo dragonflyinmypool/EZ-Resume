@@ -22,7 +22,11 @@
       <div class="job">
         <h3><%= resumeData.experience[i].jobTitle %></h3>
         <p class="job-duration"><%= resumeData.experience[i].jobDuration %></p>
-        <p><%= resumeData.experience[i].jobDescription %></p>
+        <ul>
+          <% for(let e = 0; e < resumeData.experience[i].JobDutiesOrAccomplishments.length; e++) { %>
+          <li><%= resumeData.experience[i].JobDutiesOrAccomplishments[e] %></li>
+          <% } %>
+        </ul>
       </div>
       <% } %>
     </div>

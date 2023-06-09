@@ -33,9 +33,9 @@ const clientPromise = mongoose
   });
 
 // Set up view engine and static rendering
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-app.use(express.static(path.join(__dirname, 'public')));
 
 // MIDDLEWARE
 // Middleware to use DELETE method
@@ -68,6 +68,6 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-app.listen(process.env.PORT || 3000, '0.0.0.0', () => {
+app.listen(process.env.PORT || 3500, '0.0.0.0', () => {
   console.log('Server started');
 });
