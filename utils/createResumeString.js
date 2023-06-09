@@ -30,7 +30,7 @@ function createResumeString(resumeData) {
     </div>`;
   }
 
-  let resumeString = `<main>
+  let resumeString = `<html><body><main>
     <div class="container">
       <div class="header">
         <h1>${resumeData.basicInfo.name}</h1>
@@ -52,7 +52,103 @@ function createResumeString(resumeData) {
         <p>Contact: ${resumeData.contact}</p>
       </div>
     </div>
-  </main>`;
+  </main>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora&family=Poppins:wght@300&family=Roboto+Slab&display=swap');
+
+  body {
+    font-family: 'Roboto Slab', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f7fa;
+    color: #333;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 5px auto;
+    padding: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+  }
+
+  .header {
+    text-align: center;
+    padding: 5px 0;
+    background-color: #1a1a2e;
+    color: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .header h1 {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+  }
+
+  .header p {
+    margin: 0;
+    font-family: 'Lora', serif;
+    font-size: 12px;
+  }
+
+  .section {
+    margin: 3px 0;
+  }
+
+  .section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #1a1a2e;
+    border-bottom: 1px solid #1a1a2e;
+  }
+
+  .section p,
+  .section ul {
+    margin: 2px 0;
+    padding: 0;
+    font-size: 12px;
+  }
+
+  .section ul li {
+    margin-left: 15px;
+  }
+
+  .job,
+  .education {
+    margin-bottom: 3px;
+  }
+
+  .job h3,
+  .education h3 {
+    font-family: 'Lora', serif;
+    font-size: 12px;
+    color: #333;
+  }
+
+  .job-duration,
+  .edu-duration {
+    font-size: 10px;
+    color: #666;
+    font-style: italic;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 5px;
+    background-color: #1a1a2e;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+</style>
+</body>
+</html>
+  `;
   return resumeString;
 }
 
