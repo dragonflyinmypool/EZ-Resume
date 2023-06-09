@@ -11,28 +11,33 @@
 <body class="bg-light">
   <div class="container">
     <div class="row justify-content-center align-items-center min-vh-100">
-      <div class="col-sm-8 col-md-6 col-lg-4">
-        <div class="card">
-          <div class="card-body">
-            <h1 class="text-center mb-4">Login</h1>
-            <!-- Email login / register form -->
-            <form action="/" method="post">
-              <div class="mb-3">
-                <label for="email" class="form-label">Email:</label>
-                <input type="email" id="email" name="email" class="form-control" required>
+      <div class="col-lg-8">
+        <div class="row">
+          <!-- include components/explination.ejs -->
+
+          <%- include('components/explination') -%>
+
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="text-center mb-4">Login</h2>
+                <!-- Email login / register form -->
+                <form action="/" method="post">
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100">Login</button>
+                </form>
+                <!-- link to register page -->
+                <p class="text-center mt-3">Don't have an account? <a href="/">Register</a></p>
               </div>
-              <button type="submit" class="btn btn-primary w-100">Login</button>
-            </form>
-            <!-- link to register page -->
-            <p class="text-center mt-3">Don't have an account? <a href="/">Register</a></p>
-
-
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </body>
-
 
 </html>
