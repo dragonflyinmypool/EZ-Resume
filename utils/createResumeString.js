@@ -42,7 +42,7 @@ function createResumeString(resumeData) {
       </div>
       <div class="section">
         <h2>Skills</h2>
-        <ul>${skills}</ul>
+        <ul class="skills">${skills}</ul>
       </div>
       <div class="section">
         <h2>Experience</h2>${experience}</div>
@@ -56,10 +56,15 @@ function createResumeString(resumeData) {
   <style>
   @import url('https://fonts.googleapis.com/css2?family=Lora&family=Poppins:wght@300&family=Roboto+Slab&display=swap');
 
+  .skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
   body {
     font-family: 'Roboto Slab', serif;
     margin: 0;
-    padding: 0;
+    padding: 15;
     background-color: #f5f7fa;
     color: #333;
   }
@@ -99,6 +104,7 @@ function createResumeString(resumeData) {
   }
 
   .section h2 {
+    margin-top: 15px;
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     color: #1a1a2e;
