@@ -6,90 +6,8 @@ const puppeteer = require('puppeteer');
 const path = require('path');
 const uuidv4 = require('uuid').v4;
 
-// Add info
-exports.getAddInfo = async (req, res, next) => {
-  try {
-    const user = await User.findOne({ email: req.session.user });
-    res.render('add-basic', { user });
-  } catch (error) {
-    next(error);
-  }
-};
-exports.addBasicInfo = async (req, res, next) => {
-  try {
-    const user = await User.findOne({ email: req.session.user });
-    const { firstName, lastName, phone, location } = req.body;
-
-    user.basicInfo = { firstName, lastName, phone, location };
-    await user.save();
-
-    res.redirect('/dashboard/add-jobs');
-  } catch (error) {
-    next(error);
-  }
-};
-exports.addEntry = async (req, res, next) => {
-  try {
-    const user = await User.findOne({ email: req.session.user });
-
-    const { section, description, page } = req.body;
-    user[section].push({ description });
-
-    await user.save();
-    res.redirect(page);
-  } catch (error) {
-    next(error);
-  }
-};
-exports.deleteEntry = async (req, res, next) => {
-  console.log(req.params);
-  try {
-    const user = await User.findOne({ email: req.session.user });
-    const { section, itemId } = req.params;
-
-    user[section] = user[section].filter(
-      (item) => item._id.toString() !== itemId
-    );
-    await user.save();
-
-    res.redirect(`/dashboard/${page}`);
-  } catch (error) {
-    next(error);
-  }
-};
-
-// Add jobs
-exports.getAddJobs = async (req, res, next) => {
-  try {
-    const user = await User.findOne({ email: req.session.user });
-    res.render('add-jobs', { user });
-  } catch (error) {
-    next(error);
-  }
-};
-
-// Add education
-exports.getAddEducation = async (req, res, next) => {
-  try {
-    const user = await User.findOne({ email: req.session.user });
-    res.render('add-education', { user });
-  } catch (error) {
-    next(error);
-  }
-};
-
-// Add skills
-exports.getAddSkills = async (req, res, next) => {
-  try {
-    const user = await User.findOne({ email: req.session.user });
-    res.render('add-skills', { user });
-  } catch (error) {
-    next(error);
-  }
-};
-
 // Create resume
-exports.getCreateResume = async (req, res, next) => {
+exports.getCreateResumePage = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
     const resume = '';
@@ -100,7 +18,7 @@ exports.getCreateResume = async (req, res, next) => {
   }
 };
 
-exports.postCreateResume = async (req, res, next) => {
+exports.postResume = async (req, res, next) => {
   try {
     const { jobListing } = req.body;
     const user = await User.findOne({ email: req.session.user });

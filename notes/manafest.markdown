@@ -12,14 +12,29 @@ Save all your carrer history in one place. Our app will instaly create custom re
 
 (Add your career details to your profile without overthinking. Our app molds them into a perfect resume for each application.)
 
+## Pages
+
+- Register page (landing page)
+- Login page
+- Add basic info
+- Add work history
+- Add education
+- Add skills
+- Generate resume
+
+## Additional functionality
+
+- Download resume as PDF
+
 ## Technologies used
 
 - Node js
 - Express
-- Mongoose
 - ejs
-- VScode
-- Windows (for development)
+- Mongoose
+- Atlas database host
+- VScode (on windows)
+- Chat GPT as a developer assistant
 - Hosted on [railway.app](https://railway.app)
 - API: Chat GPT
 
@@ -39,7 +54,7 @@ My knowledge
 - JS
 - Html
 - CSS
-- Learning Node
-- Learning Express
+- Some Node.js
+- Some Express
 - Design
 - UX

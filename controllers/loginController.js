@@ -55,6 +55,7 @@ exports.postLogin = async (req, res, next) => {
     next(error);
   }
 };
+
 // 2. User clicks the login link, token is verified, user is logged in
 exports.getToken = async (req, res, next) => {
   try {
@@ -75,7 +76,7 @@ exports.getToken = async (req, res, next) => {
 };
 
 // Logout, destroy session, redirect to login page
-exports.logout = (req, res, next) => {
+exports.getLogout = (req, res, next) => {
   req.session.destroy((err) => {
     if (err) {
       return next(err);

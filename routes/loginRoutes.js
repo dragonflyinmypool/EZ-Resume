@@ -9,6 +9,6 @@ router.get('/login', userController.getLoginPage);
 
 router.post('/', userController.postLogin);
 router.get('/login/:token', userController.getToken);
-router.get('/logout', userController.logout);
+router.get('/logout', userController.getLogout);
 
 module.exports = router;
