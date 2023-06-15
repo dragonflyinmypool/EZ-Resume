@@ -1,12 +1,16 @@
-<!-- set 'page' variable in ejs -->
 <% page = 'add-education' %>
+<!-- Header -->
+<%- include('../../templates/header.ejs', { page })%>
 
-<main class="container-lg container-max">
-  <%- include('templates/header.ejs', { page })%>
-  <%- include('components/section', {title: 'Education', message:'Add an instition or degree' , section:'education' , userHistory: user.education, textboxHeight: '135px', page }) %>
+<!-- Nav -->
+<%- include('../../templates/nav-bar.ejs', {page}) %>
 
-  <a href="add-skills" class="btn btn-primary w-100">next</a>
+<main>
+  <h2>Education</h2>
+  <%- include('components/display-education', {educations: user.education}) %>
+  <%- include('components/submit-education', {educations: user.education}) %>
 
-  <%- include('templates/footer.ejs', {page: 'add-info', user }) %>
-
+  <a href="add-skills">next</a>
 </main>
+<!-- Footer -->
+<%- include('../../templates/footer.ejs', {page, user }) %>

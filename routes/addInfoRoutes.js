@@ -16,13 +16,13 @@ router.post('/add-jobs', addInfoController.postJobs);
 
 // Add education
 router.get('/add-education', addInfoController.getAddEducationPage);
-router.post('/add-jobs', addInfoController.postEducation);
+router.post('/add-education', addInfoController.postEducation);
 
 // Add skills
 router.get('/add-skills', addInfoController.getAddSkillsPage);
-router.post('/add-jobs', addInfoController.postSkills);
+router.post('/add-skills', addInfoController.postSkills);
 
 // Delete info
-router.delete('/delete-info/:section/:itemId', addInfoController.deleteEntry);
+router.delete('/delete/:section/:itemId', addInfoController.deleteEntry);
 
 module.exports = router;

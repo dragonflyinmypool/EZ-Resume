@@ -5,7 +5,7 @@ const User = require('../models/UserModel');
 exports.getAddBasicPage = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
-    res.render('add-basic', { user });
+    res.render('pages/add-basic/add-basic', { user });
   } catch (error) {
     next(error);
   }
@@ -19,7 +19,7 @@ exports.postBasic = async (req, res, next) => {
     user.basicInfo = { firstName, lastName, phone, location };
     await user.save();
 
-    res.redirect('/dashboard/add-jobs');
+    res.redirect('/add-info/add-jobs');
   } catch (error) {
     next(error);
   }
@@ -30,7 +30,7 @@ exports.postBasic = async (req, res, next) => {
 exports.getAddJobsPage = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
-    res.render('add-jobs', { user });
+    res.render('pages/add-jobs/add-jobs', { user });
   } catch (error) {
     next(error);
   }
@@ -40,11 +40,20 @@ exports.postJobs = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
 
-    const { section, description, page } = req.body;
-    user[section].push({ description });
+    const { company, position, startDate, endDate, jobDescription } = req.body;
+
+    console.log(startDate, endDate);
+
+    user['jobs'].push({
+      company,
+      position,
+      startDate,
+      endDate,
+      jobDescription,
+    });
 
     await user.save();
-    res.redirect(page);
+    res.redirect('/add-info/add-jobs');
   } catch (error) {
     next(error);
   }
@@ -55,7 +64,7 @@ exports.postJobs = async (req, res, next) => {
 exports.getAddEducationPage = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
-    res.render('add-education', { user });
+    res.render('pages/add-education/add-education', { user });
   } catch (error) {
     next(error);
   }
@@ -65,11 +74,18 @@ exports.postEducation = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
 
-    const { section, description, page } = req.body;
-    user[section].push({ description });
+    const { school, degree, feildOfStudy, startDate, endDate } = req.body;
+
+    user['education'].push({
+      school,
+      degree,
+      feildOfStudy,
+      startDate,
+      endDate,
+    });
 
     await user.save();
-    res.redirect(page);
+    res.redirect('/add-info/add-education');
   } catch (error) {
     next(error);
   }
@@ -112,7 +128,7 @@ exports.deleteEntry = async (req, res, next) => {
     );
     await user.save();
 
-    res.redirect(`/dashboard/${page}`);
+    res.redirect(`/add-info/${page}`);
   } catch (error) {
     next(error);
   }

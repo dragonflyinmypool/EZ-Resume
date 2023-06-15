@@ -1,0 +1,10 @@
+<% jobs.forEach(function(job) { %>
+<!-- Display info  -->
+<p><strong>Company:</strong> <%= job.company %></p>
+<p><strong>Position:</strong> <%= job.position %></p>
+<p><strong>Start Date:</strong> <%= job.startDate.toISOString().substring(0, 7) %></p>
+<p><strong>End Date:</strong> <%= job.endDate.toISOString().substring(0, 7) %></p>
+<p><strong>Job Description:</strong> <%= job.jobDescription %></p>
+<!-- Delete button -->
+<%- include('../../../components/delete-button.ejs', {item: job, category: 'jobs'}) %>
+<% }) %>

@@ -1,12 +1,16 @@
 <% page = 'add-jobs' %>
+<!-- Header -->
+<%- include('../../templates/header.ejs', { page })%>
 
-<main class="container-lg container-max">
+<!-- Nav -->
+<%- include('../../templates/nav-bar.ejs', {page}) %>
 
-  <%- include('templates/header.ejs', { page })%>
-  <%- include('components/section', {title: 'Jobs' ,  message:'Add a job', section:'jobs' , userHistory: user.jobs, textboxHeight: '135px', page }) %>
+<main>
+  <h2>Job Experiance</h2>
+  <%- include('components/display-jobs', {jobs: user.jobs}) %>
+  <%- include('components/submit-job', {jobs: user.jobs}) %>
 
-  <a href="add-education" class="btn btn-primary w-100">next</a>
-
-  <%- include('templates/footer.ejs', {page, user }) %>
-
+  <a href="add-education">next</a>
 </main>
+<!-- Footer -->
+<%- include('../../templates/footer.ejs', {page, user }) %>

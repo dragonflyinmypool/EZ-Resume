@@ -16,7 +16,8 @@ const MongoDBStore = require('connect-mongo');
 // Start server & load route files
 const app = express();
 const loginRoutes = require('./routes/loginRoutes');
-const dashRoutes = require('./routes/dashboardRoutes');
+const addInfoRoutes = require('./routes/addInfoRoutes');
+const createResumeRoutes = require('./routes/createResumeRoutes');
 
 // DATABASE
 // Configure database
@@ -58,8 +59,10 @@ app.use(
 // Routes
 // Login and logout
 app.use('/', loginRoutes);
-// Dashboard => add-info & create-resume
-app.use('/dashboard', dashRoutes);
+// Add info routes
+app.use('/add-info', addInfoRoutes);
+// Create resume routes
+app.use('/create-resume', createResumeRoutes);
 
 // Error handling
 app.use((err, req, res, next) => {
@@ -68,6 +71,6 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-app.listen(process.env.PORT || 3500, '0.0.0.0', () => {
+app.listen(process.env.PORT || 3000, '0.0.0.0', () => {
   console.log('Server started');
 });

@@ -1,0 +1,19 @@
+<form action="/add-info/add-basic" method="POST" id="basicInfo">
+  <div>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" value="<%= user.basicInfo.firstName %>" required>
+  </div>
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" value="<%= user.basicInfo.lastName %>" required>
+  </div>
+  <div>
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" name="phone" value="<%= user.basicInfo.phone %>" required>
+  </div>
+  <div>
+    <label for="location">Location:</label>
+    <input type="text" id="location" name="location" value="<%= user.basicInfo.location %>" required>
+  </div>
+  <button type="submit">Next</button>
+</form>

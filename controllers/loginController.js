@@ -2,24 +2,24 @@ const crypto = require('crypto');
 const User = require('../models/UserModel');
 const transporter = require('../utils/mailer');
 
-// Login page
-exports.getLoginPage = (req, res, next) => {
-  // If user is already logged in, redirect to dashboard
-  if (req.session.user) {
-    return res.redirect('/dashboard/add-basic');
-  }
-
-  res.render('Login');
-};
-
 // Register
 exports.getRegisterPage = (req, res, next) => {
   // If user is already logged in, redirect to dashboard
   if (req.session.user) {
-    return res.redirect('/dashboard/add-basic');
+    return res.redirect('/add-info/add-basic');
   }
 
-  res.render('Register');
+  res.render('pages/login/register');
+};
+
+// Login page
+exports.getLoginPage = (req, res, next) => {
+  // If user is already logged in, redirect to dashboard
+  if (req.session.user) {
+    return res.redirect('/add-info/add-basic');
+  }
+
+  res.render('pages/login/login');
 };
 
 // User creation and login flow
@@ -50,7 +50,7 @@ exports.postLogin = async (req, res, next) => {
       html: `Click <a href="${link}">here</a> to login.`,
     });
 
-    res.render('check-email', { email });
+    res.render('pages/login/check-email', { email });
   } catch (error) {
     next(error);
   }
@@ -69,7 +69,7 @@ exports.getToken = async (req, res, next) => {
     }
 
     req.session.user = user.email;
-    res.redirect('/dashboard/add-basic');
+    res.redirect('/add-info/add-basic');
   } catch (error) {
     next(error);
   }

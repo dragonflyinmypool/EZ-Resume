@@ -1,37 +1,6 @@
 body {
-    padding: 10px;
-    padding-top: 0px;
-    font-size: 10px;
-}
-
-nav {
-    font-size: 12px;
-}
-
-main {
-    padding: 10px;
-    padding-top: 0px;
-    margin-top: 0px;
-}
-
-textarea {
-    width: 300px;
-    height: 200px;
-}
-
-.container-max {
     max-width: 800px;
-    /* adjust as per your requirement */
-    margin: auto;
-}
+    margin: 0 auto;
+    padding: 0 20px;
 
-/* for large screens */
-@media only screen and (min-width: 600px) {
-    body {
-        font-size: 18px;
-    }
-
-    nav {
-        font-size: 22px;
-    }
 }

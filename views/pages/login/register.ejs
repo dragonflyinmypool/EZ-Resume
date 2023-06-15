@@ -1,43 +1,17 @@
-<!DOCTYPE html>
-<html>
+<!-- Header -->
+<%- include('../../templates/header.ejs', {page: 'create-resume'}),   %>
 
-<head>
-  <title>Register/Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/main.css" />
-</head>
 
-<body class="bg-light">
-  <div class="container">
-    <div class="row justify-content-center align-items-center min-vh-100">
-      <div class="col-lg-8">
-        <div class="row">
-          <!-- include components/explination.ejs -->
 
-          <%- include('components/explination') -%>
+<!-- Login -->
+<h2>Register</h2>
+<!-- Login component -->
+<%- include('components/login-register', {page: 'Register'}) -%>
+<!-- Link to registration -->
+<p>Don't have an account? <a href="/login">Login</a></p>
 
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-body">
-                <h2 class="text-center mb-4">Register</h2>
-                <!-- Email login / register form -->
-                <form action="/" method="post">
-                  <div class="mb-3">
-                    <label for="email" class="form-label">Email:</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
-                  </div>
-                  <button type="submit" class="btn btn-primary w-100">Register</button>
-                </form>
-                <!-- link to register page -->
-                <p class="text-center mt-3">Have an account? <a href="/login">Login</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+<!-- App explination -->
+<%- include('components/explination') -%>
 
-</html>
+<!-- Footer -->
+<%- include('../../templates/footer.ejs', {page: 'register' }) %>

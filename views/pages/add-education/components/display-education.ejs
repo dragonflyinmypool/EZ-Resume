@@ -1,0 +1,11 @@
+<% educations.forEach(function(education) { %>
+<!-- Display info  -->
+<p><strong>School:</strong> <%= education.school %></p>
+<p><strong>Degree:</strong> <%= education.degree %></p>
+<p><strong>Field of Study:</strong> <%= education.fieldOfStudy %></p>
+<p><strong>Start Date:</strong> <%= education.startDate.toISOString().substring(0, 7) %></p>
+<p><strong>End Date:</strong> <%= education.endDate.toISOString().substring(0, 7) %></p>
+
+<!-- Delete button -->
+<%- include('../../../components/delete-button.ejs', {item: education, category: 'education'}) %>
+<% }) %>

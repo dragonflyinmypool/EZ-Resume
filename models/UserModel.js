@@ -1,9 +1,24 @@
 const mongoose = require('mongoose');
 
-const sectionSchema = new mongoose.Schema({
-  description: String,
+// Job Schema
+const jobSchema = new mongoose.Schema({
+  company: String,
+  position: String,
+  startDate: Date,
+  endDate: Date,
+  jobDescription: String,
 });
 
+// Education Schema
+const educationSchema = new mongoose.Schema({
+  school: String,
+  degree: String,
+  fieldOfStudy: String,
+  startDate: Date,
+  endDate: Date,
+});
+
+// Basic Info Schema
 const basicInfoSchema = new mongoose.Schema(
   {
     firstName: { type: String, default: '' },
@@ -14,13 +29,14 @@ const basicInfoSchema = new mongoose.Schema(
   { _id: false }
 );
 
+// User Schema
 const userSchema = new mongoose.Schema({
   email: String,
   token: String,
   expires: Date,
-  jobs: [sectionSchema],
-  skills: [sectionSchema],
-  education: [sectionSchema],
+  jobs: [jobSchema],
+  skills: [{ type: String }],
+  education: [educationSchema],
   basicInfo: { type: basicInfoSchema, default: () => ({}) },
 });
 
