@@ -7,7 +7,7 @@ const router = express.Router();
 router.use(auth);
 
 // Create Resume
-router.get('/create-resume', createResumeController.getCreateResumePage);
-router.post('/create-resume', createResumeController.postResume);
+router.get('/', createResumeController.getCreateResumePage);
+router.post('/', createResumeController.postResume);
 
 module.exports = router;

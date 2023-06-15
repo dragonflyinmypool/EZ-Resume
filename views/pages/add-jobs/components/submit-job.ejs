@@ -1,19 +1,23 @@
-<form action="/add-info/add-jobs" method="POST">
-
-  <label for="company">Company:</label><br>
-  <input type="text" id="company" name="company" required><br>
-
-  <label for="position">Position:</label><br>
-  <input type="text" id="position" name="position" required><br>
-
-  <label for="start-date">Start Date:</label><br>
-  <input type="month" id="start-date" name="startDate" required><br>
-
-  <label for="end-date">End Date:</label><br>
-  <input type="month" id="end-date" name="endDate" required><br>
-
-  <label for="job-description">Job Description:</label><br>
-  <textarea id="job-description" name="jobDescription" required></textarea><br>
-
+<form action="/add-info/add-jobs" method="POST" class="inputForms">
+  <div>
+    <label for="company">Company:</label>
+    <input type="text" id="company" name="company" required>
+  </div>
+  <div>
+    <label for="position">Position:</label>
+    <input type="text" id="position" name="position" required>
+  </div>
+  <div>
+    <label for="start-date">Start Date:</label>
+    <input type="month" id="start-date" name="startDate" required>
+  </div>
+  <div>
+    <label for="end-date">End Date:</label>
+    <input type="month" id="end-date" name="endDate" required>
+  </div>
+  <div>
+    <label for="job-description">Job Description:</label>
+    <textarea id="job-description" name="jobDescription" required></textarea>
+  </div>
   <button type="submit">Add</button>
 </form>

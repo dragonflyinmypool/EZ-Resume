@@ -1,0 +1,9 @@
+<strong>Skill:</strong>
+<p>
+  <% skills.forEach(function(skill) { %>
+  <!-- Display info -->
+  <%= skill.skill %>
+  <!-- Delete button -->
+  <%- include('../../../components/delete-button.ejs', {item: skill, category: 'skills'}) %>
+  <% }) %>
+</p>

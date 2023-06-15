@@ -96,7 +96,7 @@ exports.postEducation = async (req, res, next) => {
 exports.getAddSkillsPage = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
-    res.render('add-skills', { user });
+    res.render('pages/add-skills/add-skills', { user });
   } catch (error) {
     next(error);
   }
@@ -106,11 +106,14 @@ exports.postSkills = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
 
-    const { section, description, page } = req.body;
-    user[section].push({ description });
+    const { skill } = req.body;
+
+    console.log(skill);
+
+    user['skills'].push({ skill });
 
     await user.save();
-    res.redirect(page);
+    res.redirect('/add-info/add-skills');
   } catch (error) {
     next(error);
   }
@@ -118,7 +121,6 @@ exports.postSkills = async (req, res, next) => {
 
 // Delete entry
 exports.deleteEntry = async (req, res, next) => {
-  console.log(req.params);
   try {
     const user = await User.findOne({ email: req.session.user });
     const { section, itemId } = req.params;

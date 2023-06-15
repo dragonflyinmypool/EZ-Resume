@@ -1,8 +1,9 @@
 <main class="container-lg container-max">
 
   <!-- Header -->
-  <%- include('templates/header.ejs', {page: 'create-resume'}),   %>
-
+  <%- include('../../templates/header.ejs'),   %>
+  <%- include('../../templates/nav-bar.ejs', {page: 'create-resume'}),   %>
+  <h2>Generate Resume</h2>
   <!-- Submit job listing -->
   <%- include('components/submit-job-listing.ejs'),   %>
 
@@ -24,7 +25,7 @@
   <% } %>
 
 
-  <%- include('templates/footer.ejs', {page: 'add-info', user }) %>
+  <%- include('../../templates/footer.ejs', {page: 'add-info', user }) %>
 
 </main>
 

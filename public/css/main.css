@@ -1,6 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto:wght@500&display=swap');
+
 body {
     max-width: 800px;
     margin: 0 auto;
     padding: 0 20px;
+}
 
+/* Input forms */
+.inputForms div {
+    max-width: 600px;
+}
+
+.inputForms label {
+    display: block;
+    font-family: 'Lato', sans-serif;
+}
+
+.inputForms input,
+.inputForms textarea {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    padding: 10px;
+    /* border grey */
+    border: 1px solid rgb(172, 172, 172);
+}
+
+.inputForms textarea {
+
+    height: 200px;
+    resize: none;
+}
+
+.inputForms button {
+    background-color: rgb(181, 72, 255);
+    color: white;
+    padding: .35rem .8rem;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
 }

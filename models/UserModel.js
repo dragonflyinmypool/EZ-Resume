@@ -1,5 +1,16 @@
 const mongoose = require('mongoose');
 
+// Basic Info Schema
+const basicInfoSchema = new mongoose.Schema(
+  {
+    firstName: { type: String, default: '' },
+    lastName: { type: String, default: '' },
+    phone: { type: String, default: '' },
+    location: { type: String, default: '' },
+  },
+  { _id: false }
+);
+
 // Job Schema
 const jobSchema = new mongoose.Schema({
   company: String,
@@ -18,16 +29,9 @@ const educationSchema = new mongoose.Schema({
   endDate: Date,
 });
 
-// Basic Info Schema
-const basicInfoSchema = new mongoose.Schema(
-  {
-    firstName: { type: String, default: '' },
-    lastName: { type: String, default: '' },
-    phone: { type: String, default: '' },
-    location: { type: String, default: '' },
-  },
-  { _id: false }
-);
+const skillSchema = new mongoose.Schema({
+  skill: String,
+});
 
 // User Schema
 const userSchema = new mongoose.Schema({
@@ -35,9 +39,8 @@ const userSchema = new mongoose.Schema({
   token: String,
   expires: Date,
   jobs: [jobSchema],
-  skills: [{ type: String }],
+  skills: [skillSchema],
   education: [educationSchema],
   basicInfo: { type: basicInfoSchema, default: () => ({}) },
 });
-
 module.exports = mongoose.model('User', userSchema);

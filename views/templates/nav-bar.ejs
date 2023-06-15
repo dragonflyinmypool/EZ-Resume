@@ -1,4 +1,4 @@
-<nav>
+<nav class="main-nav">
   <div>
     <ul>
       <li>
@@ -6,28 +6,74 @@
           Basic Info
         </a>
       </li>
+
       <li>
         <a href="/add-info/add-jobs">
-          Job Experience
+          Jobs
         </a>
       </li>
+
       <li>
         <a href="/add-info/add-education">
           Education
         </a>
       </li>
+
       <li>
         <a href="/add-info/add-skills">
           Skills
         </a>
       </li>
-    </ul>
-    <ul>
+
       <li>
-        <a href="/add-info/create-resume">
+        <a href="/create-resume">
           Generate Resume
         </a>
       </li>
     </ul>
   </div>
 </nav>
+
+<style>
+  .main-nav {
+    font-family: 'Roboto', sans-serif;
+    margin-top: .8rem;
+  }
+
+  .main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .main-nav ul li {
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+
+  .main-nav a {
+    text-decoration: none;
+    font-size: 1.0rem;
+    display: block;
+    padding: 0.3rem .5rem;
+    white-space: nowrap;
+  }
+
+  .main-nav ul li:hover {
+    background: rgba(203, 100, 100, 0.1);
+  }
+
+  .main-nav ul li.active {
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+  }
+
+  .main-nav a:active,
+  .main-nav a:visited {
+    color: inherit;
+    /* or any other color you want, but not red */
+  }
+</style>

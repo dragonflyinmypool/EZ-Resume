@@ -12,7 +12,7 @@ exports.getCreateResumePage = async (req, res, next) => {
     const user = await User.findOne({ email: req.session.user });
     const resume = '';
     const pdfUrl = '';
-    res.render('create-resume', { resume, user, pdfUrl });
+    res.render('pages/create-resume/create-resume', { resume, user, pdfUrl });
   } catch (error) {
     next(error);
   }
@@ -77,7 +77,7 @@ exports.postResume = async (req, res, next) => {
     const pdfUrl = `/pdfs/${urlFileName}`;
 
     // Render the HTML page and provide a download link for the PDF
-    res.render('create-resume', { resume, user, pdfUrl });
+    res.render('pages/create-resume/create-resume', { resume, user, pdfUrl });
   } catch (error) {
     next(error);
   }
