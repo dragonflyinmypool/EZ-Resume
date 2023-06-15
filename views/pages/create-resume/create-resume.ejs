@@ -1,34 +1,31 @@
-<main class="container-lg container-max">
-
-  <!-- Header -->
   <%- include('../../templates/header.ejs'),   %>
-  <%- include('../../templates/nav-bar.ejs', {page: 'create-resume'}),   %>
-  <h2>Generate Resume</h2>
-  <!-- Submit job listing -->
-  <%- include('components/submit-job-listing.ejs'),   %>
 
-  <!-- Download resume button with bootstap styles -->
-  <!-- if pdfPath then -->
-  <% if (pdfUrl) { %>
+  <main>
+    <!-- Header -->
+    <%- include('../../templates/nav-bar.ejs', {page: 'create-resume'}),   %>
+    <h2>Generate Resume</h2>
+    <!-- Submit job listing -->
+    <%- include('components/submit-job-listing.ejs'),   %>
 
-  <div class="d-grid gap-2 col-6 mx-auto">
-    <a href="<%= pdfUrl %>" download>Download PDF</a>
-  </div>
+    <!-- Download resume button with bootstap styles -->
+    <!-- if pdfPath then -->
+    <% if (pdfUrl) { %>
+
+    <div>
+      <a href="<%= pdfUrl %>" download>Download PDF</a>
+    </div>
+    <% } %>
+
+    <!-- Display resume -->
+    <% if (resume) { %>
+    <%- include('components/resume-render.ejs', { resumeData: resume }) %>
+    <% } %>
 
 
+    <%- include('../../templates/footer.ejs', {page: 'add-info', user }) %>
 
-  <% } %>
+  </main>
 
-  <!-- Display resume -->
-  <% if (resume) { %>
-  <%- include('components/resume-render.ejs', { resumeData: resume }) %>
-  <% } %>
+  </body>
 
-
-  <%- include('../../templates/footer.ejs', {page: 'add-info', user }) %>
-
-</main>
-
-</body>
-
-</html>
+  </html>

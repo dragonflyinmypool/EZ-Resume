@@ -1,11 +1,11 @@
 <% page = 'add-basics' %>
+<%- include('../../templates/header.ejs', { page })%>
 
 <!-- Nav -->
 <%- include('../../templates/nav-bar.ejs', {page}) %>
 
 <main>
   <h2>Basic Info</h3>
-    <%- include('../../templates/header.ejs', { page })%>
     <%- include('components/basic-info', { user }) %>
     <%- include('../../templates/footer.ejs', { page, user }) %>
 </main>

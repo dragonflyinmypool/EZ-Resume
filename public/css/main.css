@@ -23,7 +23,6 @@ body {
     margin-bottom: 20px;
     margin-top: 5px;
     padding: 10px;
-    /* border grey */
     border: 1px solid rgb(172, 172, 172);
 }
 
@@ -40,4 +39,14 @@ body {
     border: none;
     border-radius: 5px;
     font-family: 'Roboto', sans-serif;
+}
+
+/* one row */
+.oneRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.oneRow div {
+    width: 48%;
 }
