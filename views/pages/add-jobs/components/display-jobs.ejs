@@ -1,10 +1,34 @@
-<% jobs.forEach(function(job) { %>
-<!-- Display info  -->
-<p><strong>Company:</strong> <%= job.company %></p>
-<p><strong>Position:</strong> <%= job.position %></p>
-<p><strong>Start Date:</strong> <%= job.startDate.toISOString().substring(0, 7) %></p>
-<p><strong>End Date:</strong> <%= job.endDate.toISOString().substring(0, 7) %></p>
-<p><strong>Job Description:</strong> <%= job.jobDescription %></p>
-<!-- Delete button -->
-<%- include('../../../components/delete-button.ejs', {item: job, category: 'jobs'}) %>
-<% }) %>
+  <%
+function formatDate(date) {
+    const months = [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+    ];
+
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+
+    return `${month} ${year}`;
+  }
+%>
+
+
+  <% jobs.forEach(function(job) { %>
+  <div class="entry">
+    <!-- Display info  -->
+    <p><%= job.company %>, <%= job.position %> (<%= formatDate(job.startDate) %>, <%= formatDate(job.endDate) %>)</p>
+
+    <p><%= job.jobDescription %></p>
+    <!-- Delete button -->
+    <%- include('../../../components/delete-button.ejs', {item: job, category: 'jobs'}) %>
+    <!-- vertical line -->
+  </div>
+
+  </div>
+
+  <% }) %>
+
+
+  <style>
+
+  </style>

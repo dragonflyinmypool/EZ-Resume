@@ -1,5 +1,22 @@
- <form action="/add-info/delete/<%= category %>/<%= item._id %>?_method=DELETE" method="POST">
+ <form action="/add-info/delete/<%= category %>/<%= item._id %>?_method=DELETE" method="POST" class="delete-button">
    <input type="hidden" name="_method" value="DELETE">
    <input type="hidden" name="page" value="add-jobs">
    <button type="submit">x</button>
  </form>
+
+
+ <style>
+   /* add styles to button make it look like a buton, but sublte*/
+   .delete-button button {
+     background-color: #ffd5d5;
+     border: none;
+     margin: 0;
+     font-size: 1rem;
+     cursor: pointer;
+     color: #ffffff;
+     width: 20px;
+     height: 20px;
+     display: flex;
+     justify-content: center;
+   }
+ </style>

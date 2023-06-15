@@ -41,7 +41,6 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-/* one row */
 .oneRow {
     display: flex;
     justify-content: space-between;
@@ -49,4 +48,23 @@ body {
 
 .oneRow div {
     width: 48%;
+}
+
+
+/* Display pages */
+
+.entry {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+/* display delete button at top right of .entry box but not of page */
+.entry .delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
 }

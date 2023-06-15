@@ -1,9 +1,45 @@
 <strong>Skill:</strong>
-<p>
+
+<!-- Display info -->
+<div class="skills">
   <% skills.forEach(function(skill) { %>
-  <!-- Display info -->
-  <%= skill.skill %>
-  <!-- Delete button -->
-  <%- include('../../../components/delete-button.ejs', {item: skill, category: 'skills'}) %>
+  <div>
+    <span>
+      <%= skill.skill %>
+    </span>
+    <!-- Delete button -->
+    <%- include('../../../components/delete-button.ejs', {item: skill, category: 'skills'}) %>
+  </div>
+
   <% }) %>
-</p>
+</div>
+<style>
+  .skills div {
+    background-color: #f0f0f0;
+    padding: 5px;
+    margin: 2px;
+    min-width: 150px;
+    display: flex;
+    justify-content: space-between;
+    /* wrap */
+
+    /* horizontal center */
+    align-items: center;
+  }
+
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .skills form {
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+
+  /* span left margin 4px */
+  .skills span {
+    margin-right: 7px;
+  }
+</style>

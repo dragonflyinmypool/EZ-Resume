@@ -74,14 +74,11 @@ exports.postEducation = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
 
-    const { school, degree, feildOfStudy, startDate, endDate } = req.body;
+    const { school, info } = req.body;
 
     user['education'].push({
       school,
-      degree,
-      feildOfStudy,
-      startDate,
-      endDate,
+      info,
     });
 
     await user.save();
