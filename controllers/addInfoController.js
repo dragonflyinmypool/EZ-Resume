@@ -40,9 +40,19 @@ exports.postJobs = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.session.user });
 
-    const { company, position, startDate, endDate, jobDescription } = req.body;
+    const {
+      company,
+      position,
+      startMonth,
+      startYear,
+      endMonth,
+      endYear,
+      jobDescription,
+    } = req.body;
 
-    console.log(startDate, endDate);
+    // Convert dates for mongoose
+    const startDate = new Date(startYear, startMonth);
+    const endDate = new Date(endYear, endMonth);
 
     user['jobs'].push({
       company,

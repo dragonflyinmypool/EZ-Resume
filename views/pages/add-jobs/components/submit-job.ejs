@@ -14,11 +14,13 @@
 
     <div>
       <label for="start-date">Start Date:</label>
-      <input type="month" id="start-date" name="startDate" required>
+      <!-- import components/date-picker.ejs -->
+      <%- include('date-picker.ejs', {name: 'start'}) %>
     </div>
     <div>
       <label for="end-date">End Date:</label>
-      <input type="month" id="end-date" name="endDate" required>
+      <%- include('date-picker.ejs', {name: 'end'}) %>
+
     </div>
   </div>
   <div>

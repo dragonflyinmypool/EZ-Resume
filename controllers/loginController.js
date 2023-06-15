@@ -46,8 +46,54 @@ exports.postLogin = async (req, res, next) => {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: email,
-      subject: 'Login link',
-      html: `Click <a href="${link}">here</a> to login.`,
+      subject: 'EZ-Resume Login Link',
+      html: `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .content {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    .link {
+      font-size: 18px;
+      color: blue;
+      text-decoration: none;
+    }
+    .header 
+    {
+      margin-bottom: 20px;
+    }
+      .footer {
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    Hello,
+  </div>
+  
+  <div>
+    Click 
+    <a href="${link}" class="link">
+      here
+    </a> 
+    to login to EZ-Resume. </div>
+  <div class="footer">
+    Let EZ-Resume make your job application effortless.
+  </div>
+</body>
+</html>
+`,
     });
 
     res.render('pages/login/check-email', { email });
