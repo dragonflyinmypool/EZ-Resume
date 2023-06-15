@@ -1,11 +1,16 @@
 <% page = 'add-skills' %>
+<!-- Header -->
+<%- include('../../templates/header.ejs', { page })%>
 
-<main class="container-lg container-max">
-  <%- include('templates/header.ejs', { page })%>
-  <%- include('components/section', {title: 'Skills' ,  message:'Add a skill', section:'skills' , userHistory: user.skills, textboxHeight: '135px', page }) %>
+<!-- Nav -->
+<%- include('../../templates/nav-bar.ejs', {page}) %>
 
-  <a href="create-resume" class="btn btn-primary w-100">next</a>
+<main>
+  <h2>Skills</h2>
+  <%- include('components/display-skills', {skills: user.skills}) %>
+  <%- include('components/submit-skills', {skills: user.skills}) %>
 
-  <%- include('templates/footer.ejs', {page, user }) %>
-
+  <a href="../create-resume">next</a>
 </main>
+<!-- Footer -->
+<%- include('../../templates/footer.ejs', {page, user }) %>
