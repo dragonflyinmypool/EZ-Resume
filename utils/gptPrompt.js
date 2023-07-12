@@ -49,9 +49,14 @@ exports.generatePrompt = (
   ${phone}
   ${location}
   ## Work Experience
-  ${jobs.map((job) => `### ${job.description}`).join('\n')}
+  ${jobs
+    .map(
+      (job) =>
+        `### Company: ${job.company}, Position: ${job.position}, Start Date: ${job.startDate}, End Date: ${job.endDate}, Description: ${job.jobDescription}`
+    )
+    .join('\n')}
   ## Skills
-  ${skills.map((skill) => `### ${skill.description}`).join('\n')}
+  ${skills.map((skill) => `### ${skill.skill}`).join('\n')}
   ## Education
-  ${education.map((edu) => `### ${edu.description}`).join('\n')}
+  ${education.map((edu) => `### ${edu.school}, ${edu.info}`).join('\n')}
   `;

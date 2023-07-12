@@ -27,6 +27,8 @@ exports.postResume = async (req, res, next) => {
     const skills = user.skills;
     const education = user.education;
 
+    console.log('Job, skills and education info', jobs, skills, education);
+
     const gpt3Prompt = prompt.generatePrompt(
       jobListing,
       firstName,
@@ -48,7 +50,7 @@ exports.postResume = async (req, res, next) => {
 
     // Use puppeteer to convert string to PDF
     const browser = await puppeteer.launch({
-      headless: true,
+      headless: 'new',
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
 
