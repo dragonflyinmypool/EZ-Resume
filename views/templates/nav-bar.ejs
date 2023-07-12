@@ -1,5 +1,6 @@
 <nav class="main-nav">
-  <div>
+  <div class="add-your-info">
+    <div>1. Add your career info:</div>
     <ul>
       <li>
         <a href="/add-info/add-basic">
@@ -25,19 +26,41 @@
         </a>
       </li>
 
+
+    </ul>
+
+
+  </div>
+  <div class="generate">
+    <div>2. Generate your resume:</div>
+    <ul>
       <li>
         <a href="/create-resume">
           Create Resume
         </a>
       </li>
     </ul>
+
+
   </div>
+
+
 </nav>
 
 <style>
   .main-nav {
     font-family: 'Roboto', sans-serif;
     margin-top: .8rem;
+  }
+
+  .add-your-info {
+    background-color: rgb(181, 72, 255);
+    padding: .5rem;
+  }
+
+  .generate {
+    background-color: #5ab1f8;
+    padding: .5rem;
   }
 
   .main-nav ul {
@@ -68,13 +91,12 @@
     white-space: nowrap;
   }
 
-  /* first element no padding left */
-  .main-nav ul li:first-child a {
-    padding-left: 0;
-  }
+
 
   .main-nav ul li:hover {
     background: rgba(203, 100, 100, 0.1);
+    color: #fff;
+    outline: 1px solid #ccc;
   }
 
   .main-nav ul li.active {
