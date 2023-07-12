@@ -47,7 +47,11 @@ exports.postResume = async (req, res, next) => {
     const resumeString2 = createResumeString(resume);
 
     // Use puppeteer to convert string to PDF
-    const browser = await puppeteer.launch({ headless: 'new' });
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
+
     const page = await browser.newPage();
 
     await page.setContent(resumeString2, {
