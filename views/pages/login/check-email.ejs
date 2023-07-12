@@ -2,36 +2,37 @@
 <%- include('../../templates/header.ejs', {page: 'email-message'}),   %>
 
 <!-- Message -->
-<div class="container">
+
+< <main class="container">
   <p>Check <span><%= email %></span> for a link. </p>
   <p> Click it to login.</p>
   <p class="note">(Check your SPAM folder)</p>
-</div>
-<!-- Footer -->
-<%- include('../../templates/footer.ejs', {page: 'email-message' }) %>
+  </main>
+  <!-- Footer -->
+  <%- include('../../templates/footer.ejs', {page: 'email-message' }) %>
 
 
-<style>
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 80vh;
-    margin-top: 20px;
-  }
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 80vh;
+      margin-top: 20px;
+    }
 
-  p {
-    font-size: 1.5rem;
-    margin: 10px;
-  }
+    p {
+      font-size: 1.5rem;
+      margin: 10px;
+    }
 
-  span {
-    color: #f85a89;
-    font-weight: bold;
-  }
+    span {
+      color: #f85a89;
+      font-weight: bold;
+    }
 
-  .note {
-    font-size: 1rem;
-  }
-</style>
+    .note {
+      font-size: 1rem;
+    }
+  </style>

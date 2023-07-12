@@ -25,7 +25,6 @@ function createResumeString(resumeData) {
   for (let i = 0; i < resumeData.education.length; i++) {
     education += `<div class="education">
       <h3>${resumeData.education[i].degree}</h3>
-      <p class="edu-duration">${resumeData.education[i].eduDuration}</p>
       <p>${resumeData.education[i].description}</p>
     </div>`;
   }

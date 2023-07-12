@@ -17,7 +17,6 @@ const htmlTemplate = `
     "education": [
         {
             "degree": "Name of Institution",
-            "eduDuration": "Dates",
             "description": "Description..."
         }
     ],

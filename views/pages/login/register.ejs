@@ -2,16 +2,16 @@
 <%- include('../../templates/header.ejs', {page: 'create-resume'}),   %>
 
 
+<main>
+  <!-- Login -->
+  <h2>Register</h2>
+  <!-- Login component -->
+  <%- include('components/login-register', {page: 'Register'}) -%>
+  <!-- Link to registration -->
+  <p>Don't have an account? <a href="/login">Login</a></p>
 
-<!-- Login -->
-<h2>Register</h2>
-<!-- Login component -->
-<%- include('components/login-register', {page: 'Register'}) -%>
-<!-- Link to registration -->
-<p>Don't have an account? <a href="/login">Login</a></p>
-
-<!-- App explination -->
-<%- include('components/explination') -%>
-
+  <!-- App explination -->
+  <%- include('components/explination') -%>
+</main>
 <!-- Footer -->
 <%- include('../../templates/footer.ejs', {page: 'register' }) %>

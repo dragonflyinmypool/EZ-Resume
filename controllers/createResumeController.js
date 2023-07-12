@@ -45,6 +45,7 @@ exports.postResume = async (req, res, next) => {
     // Convert string to object
     const resume = JSON.parse(resumeDataString);
 
+    console.log('resume', resume);
     // Convert object to string
     const resumeString2 = createResumeString(resume);
 
